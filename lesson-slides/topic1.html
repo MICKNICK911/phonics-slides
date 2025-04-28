@@ -74,6 +74,10 @@
     </style>
 </head>
 <body>
+    
+    <div id="loading" style="position: fixed; top:0; left:0; width:100%; height:100%; background:#000; z-index:9999;"></div>
+
+    
     <div class="reveal">
         <div class="slides" style="background-color: #9A1600">
             <section>
@@ -334,5 +338,16 @@
             hash: true
         });
     </script>
+    
+   <script>
+    Reveal.addEventListener('ready', function() {
+        document.getElementById('loading').style.display = 'none';
+    });
+  </script>
+
+    
 </body>
 </html>
+
+
+
