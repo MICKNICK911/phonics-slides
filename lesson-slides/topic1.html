@@ -4,43 +4,335 @@
     <link rel="stylesheet" href="../dist/reveal.css">
 	<link rel="stylesheet" href="../dist/theme/black.css">
     <style>
-        .nav-links {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 100;
+        
+        .reveal,
+        .reveal .slides {
+            width: 100% !important;
+            height: 100vh !important;
+            min-height: 100vh !important;
+            margin: 0 !important;
+            top: 0 !important;
         }
 
-        .nav-links a {
-            font-size: 16px;
-            color: rgb(117, 117, 248);
-            border: 2px solid rgb(117, 117, 248);
-            border-radius: 5px;
-            padding: 10px;
+        .reveal .slides section {
+            height: 100vh !important;
+            min-height: 100vh !important;
+            display: flex !important;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
+        
+        .letter-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+        .letter-card:hover {
+            transform: scale(1.05);
+        }
+        .letter-image {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            margin: 5px auto;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .alphabet-container {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+                gap: 8px;
+            }
+            .letter-image {
+                width: 60px;
+                height: 60px;
+            }
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .letter-image {
+                width: 100px;
+                height: 100px;
+            }
+        }
+
+        /*@media (max-width: 480px) {
+            .alphabet-container {
+                grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            }
+            .letter-image {
+                width: 50px;
+                height: 50px;
+            }
+        }*/
     </style>
 </head>
 <body>
     <div class="reveal">
-        <div class="slides">
+        <div class="slides" style="background-color: #9A1600">
             <section>
-                <h1>Topic 1</h1>
-                <p>Slide 1.1</p>
-            </section>
-            <section>
-                <h2>Topic 1 Continued</h2>
-                <p>Slide 1.2</p>
+                <section>
+                <h2>English Alphabets</h2>
+                </section>
+                   
+                  <section>
+                    <!-- A -->
+                    <div class="letter-card">
+                        <h3>A</h3>
+                        <p>Apple</p>
+                        <img src="images/apple.png" class="letter-image" alt="Apple">
+                    </div>
+                  </section>
+
+                  <section>
+                    <!-- B -->
+                    <div class="letter-card">
+                        <h3>B</h3>
+                        <p>Ball</p>
+                        <img src="images/ball.png" class="letter-image" alt="Ball">
+                    </div>
+                  </section>
+                  
+                  <section>
+                    <!-- C -->
+                    <div class="letter-card">
+                        <h3>C</h3>
+                        <p>Cat</p>
+                        <img src="images/cat.png" class="letter-image" alt="Cat">
+                    </div>
+                   </section>
+                   
+                   <section>
+                    <!-- D -->
+                    <div class="letter-card">
+                        <h3>D</h3>
+                        <p>Dog</p>
+                        <img src="images/dog.png" class="letter-image" alt="Dog">
+                    </div>
+                   </section>
+
+                   <section>
+                    <!-- E -->
+                    <div class="letter-card">
+                        <h3>E</h3>
+                        <p>Elephant</p>
+                        <img src="images/elephant.png" class="letter-image" alt="Elephant">
+                    </div>
+                   </section>
+                   
+                   <section>
+                    <!-- F -->
+                    <div class="letter-card">
+                        <h3>F</h3>
+                        <p>Fish</p>
+                        <img src="images/fish.png" class="letter-image" alt="Fish">
+                    </div>
+                   </section>
+
+                   <section>
+                    <!-- G -->
+                    <div class="letter-card">
+                        <h3>G</h3>
+                        <p>Giraffe</p>
+                        <img src="images/giraffe.png" class="letter-image" alt="Giraffe">
+                    </div>
+                   </section>
+
+                   <section>
+                    <!-- H -->
+                    <div class="letter-card">
+                        <h3>H</h3>
+                        <p>House</p>
+                        <img src="images/house.png" class="letter-image" alt="House">
+                    </div>
+                   </section>
+
+                   <section>
+                    <!-- I -->
+                    <div class="letter-card">
+                        <h3>I</h3>
+                        <p>Ice Cream</p>
+                        <img src="images/icecream.png" class="letter-image" alt="Ice Cream">
+                    </div>
+                   </section>
+
+                   <section>
+                    <!-- J -->
+                    <div class="letter-card">
+                        <h3>J</h3>
+                        <p>Juice</p>
+                        <img src="images/juice.png" class="letter-image" alt="Juice">
+                    </div>
+                   </section>
+                   
+                   <section>
+                    <!-- K -->
+                    <div class="letter-card">
+                        <h3>K</h3>
+                        <p>Kite</p>
+                        <img src="images/kite.png" class="letter-image" alt="Kite">
+                    </div>
+                   </section>
+
+                   <section>
+                    <!-- L -->
+                    <div class="letter-card">
+                        <h3>L</h3>
+                        <p>Lion</p>
+                        <img src="images/lion.png" class="letter-image" alt="Lion">
+                    </div>
+                   </section>
+                   
+                   <section>
+                    <!-- M -->
+                    <div class="letter-card">
+                        <h3>M</h3>
+                        <p>Monkey</p>
+                        <img src="images/monkey.png" class="letter-image" alt="Monkey">
+                    </div>
+                   </section>
+
+                   <section>
+                    <!-- N -->
+                    <div class="letter-card">
+                        <h3>N</h3>
+                        <p>Nest</p>
+                        <img src="images/nest.png" class="letter-image" alt="Nest">
+                    </div>
+                   </section>
+
+                   <section>
+                    <!-- O -->
+                    <div class="letter-card">
+                        <h3>O</h3>
+                        <p>Orange</p>
+                        <img src="images/orange.png" class="letter-image" alt="Orange">
+                    </div>
+                   </section>
+
+                   <section>
+                    <!-- P -->
+                    <div class="letter-card">
+                        <h3>P</h3>
+                        <p>Pizza</p>
+                        <img src="images/pizza.png" class="letter-image" alt="Pizza">
+                    </div>
+                   </section>
+
+                   <section>
+                    <!-- Q -->
+                    <div class="letter-card">
+                        <h3>Q</h3>
+                        <p>Queen</p>
+                        <img src="images/queen.png" class="letter-image" alt="Queen">
+                    </div>
+                   </section>
+
+                   <section>
+                    <!-- R -->
+                    <div class="letter-card">
+                        <h3>R</h3>
+                        <p>Rabbit</p>
+                        <img src="images/rabbit.png" class="letter-image" alt="Rabbit">
+                    </div>
+                   </section>
+
+                   <section>
+                    <!-- S -->
+                    <div class="letter-card">
+                        <h3>S</h3>
+                        <p>Sun</p>
+                        <img src="images/sun.png" class="letter-image" alt="Sun">
+                    </div>
+                   </section>
+
+                   <section>
+                    <!-- T -->
+                    <div class="letter-card">
+                        <h3>T</h3>
+                        <p>Tree</p>
+                        <img src="images/tree.png" class="letter-image" alt="Tree">
+                    </div>
+                   </section>
+
+                   <section>
+                    <!-- U -->
+                    <div class="letter-card">
+                        <h3>U</h3>
+                        <p>Umbrella</p>
+                        <img src="images/umbrella.png" class="letter-image" alt="Umbrella">
+                    </div>
+                   </section>
+
+                   <section>
+                    <!-- V -->
+                    <div class="letter-card">
+                        <h3>V</h3>
+                        <p>Van</p>
+                        <img src="images/van.png" class="letter-image" alt="Van">
+                    </div>
+                   </section>
+
+                   <section>
+                    <!-- W -->
+                    <div class="letter-card">
+                        <h3>W</h3>
+                        <p>Watch</p>
+                        <img src="images/watch.png" class="letter-image" alt="Watch">
+                    </div>
+                   </section>
+
+                   <section>
+                    <!-- X -->
+                    <div class="letter-card">
+                        <h3>X</h3>
+                        <p>Xylophone</p>
+                        <img src="images/xylophone.png" class="letter-image" alt="Xylophone">
+                    </div>
+                   </section>
+
+                   <section>
+                    <!-- Y -->
+                    <div class="letter-card">
+                        <h3>Y</h3>
+                        <p>Yacht</p>
+                        <img src="images/yacht.png" class="letter-image" alt="Yacht">
+                    </div>
+                   </section>
+
+                   <section>
+                    <!-- Z -->
+                    <div class="letter-card">
+                        <h3>Z</h3>
+                        <p>Zebra</p>
+                        <img src="images/zebra.png" class="letter-image" alt="Zebra">
+                    </div>
+                   </section>
+                
             </section>
         </div>
     </div>
 
-    <div class="nav-links">
-        <a href="../index.html" target="_parent">Main Menu</a>   
-    </div>
-
     <script src="../dist/reveal.js"></script>
-    <script>
-        Reveal.initialize();
+       <script>
+        Reveal.initialize({
+            width: '100%',
+            height: '100%',
+            margin: 0,
+            minScale: 1,
+            maxScale: 1,
+            transition: 'slide',
+            controls: true,
+            progress: true,
+            center: true,
+            hash: true
+        });
     </script>
 </body>
 </html>
