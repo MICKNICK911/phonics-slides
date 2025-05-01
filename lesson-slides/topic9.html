@@ -14,15 +14,16 @@
         .y-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            height: 80vh;  /* Use 80% of viewport height */
+            gap: 10px;
+            height: 50vh;  /* Use 80% of viewport height */
             padding: 2rem;
             background: transparent;
+            justify-self: center;
         }
 
         .y-column {
             background: rgba(255, 255, 255, 0.1);
-            padding: 2rem;
+            padding: 20px;
             border-radius: 15px;
             backdrop-filter: blur(5px);
             border: 1px solid rgba(255, 255, 255, 0.2);
@@ -30,9 +31,9 @@
 
         .y-title {
             color: #FFD700;
-            font-size: 1.5em;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
+            font-size: 30px;
+            margin-bottom: 0px;
+            padding-bottom: 0px;
             border-bottom: 2px solid #3498db;
         }
 
@@ -40,19 +41,29 @@
             list-style: none;
             padding: 0;
             margin: 0;
-            font-size: 1.2em;
-            line-height: 1.8;
+            font-size: 25px;
+            line-height: 1.5;
             color: #fff;
         }
 
+        .heading {
+                color: rgb(94, 255, 0);
+                margin-top: 0px;
+            }
+
         @media (max-width: 768px) {
             .y-grid {
-                grid-template-columns: 1fr;
+                /* grid-template-columns: 1fr; */
                 height: auto;
                 min-height: 90vh;
             }
             .y-column {
                 padding: 1.5rem;
+            }
+
+            .heading {
+                color: rgb(255, 208, 0);
+                margin-top: 10px;
             }
         }
         
@@ -64,6 +75,11 @@
         .y-list {
         font-size: 1rem;
         }
+
+        .heading {
+            color: rgb(255, 208, 0);
+            margin-top: 10px;
+        }
       }
     </style>
 </head>
@@ -71,7 +87,7 @@
     <div class="reveal">
         <div class="slides">
             <section data-background="#1a1a1a">
-                <h2 style="color: #80FF00; margin-bottom: 2rem;">Y as a Vowel</h2>
+                <div class="heading" style="font-size:50px; font-weight: bolder;">Y as a Vowel</div>
                 
                 <div class="y-grid">
                     <!-- Short i Column -->

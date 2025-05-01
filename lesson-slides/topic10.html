@@ -1,252 +1,152 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <link rel="stylesheet" href="../dist/reveal.css">
-	<link rel="stylesheet" href="../dist/theme/black.css">
     <style>
-        
-<style>
-:root {
-  --primary-color: #2196F3;
-  --background: #ffffff;
-  --text-color: #333333;
-  --card-bg: #f8f9fa;
-  --shadow: rgba(0, 0, 0, 0.1);
-}
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --accent: #2196F3;
+        }
 
-[data-theme="dark"] {
-  --background: #121212;
-  --text-color: #ffffff;
-  --card-bg: #1E1E1E;
-  --shadow: rgba(255, 255, 255, 0.1);
-}
+        body[data-theme="dark"] {
+            --bg-color: #1a1a1a;
+            --text-color: #ffffff;
+            --accent: #80FF00;
+        }
 
-* {
-  box-sizing: border-box;
-  font-family: 'Segoe UI', system-ui, sans-serif;
-}
+        html, body, .reveal, .slides, section {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            /* justify-self: center;
+            justify-content: center; */
+        }
 
-body {
-  background-color: var(--background);
-  color: var(--text-color);
-  transition: background 0.3s ease;
-}
+        .slide-content {
+            height: 100vh;
+            display: flex !important;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
 
-.reveal .slides {
-  padding: 20px;
-}
+        .next-btn {
+            position: absolute;
+            bottom: 30px;
+            padding: 12px 24px;
+            background: var(--accent);
+            color: var(--bg-color);
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease;
+        }
 
-.reveal h3 {
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
-  color: var(--primary-color);
-  font-weight: 700;
-}
+        .next-btn:hover {
+            transform: scale(1.05);
+        }
 
-.reveal p {
-  font-size: 1.8rem;
-  line-height: 1.4;
-  margin: 1rem 0;
-  color: var(--text-color);
-}
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            padding: 10px 20px;
+            background: var(--accent);
+            color: var(--bg-color);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
 
-.letter-card {
-  background: var(--card-bg);
-  border-radius: 16px;
-  padding: 2rem;
-  margin: 1rem;
-  box-shadow: 0 8px 24px var(--shadow);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.letter-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 32px var(--shadow);
-}
-
-.theme-toggle {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 1000;
-  background: var(--card-bg);
-  border: none;
-  padding: 10px 15px;
-  border-radius: 8px;
-  cursor: pointer;
-  color: var(--text-color);
-  box-shadow: 0 4px 12px var(--shadow);
-}
-
-@media (max-width: 768px) {
-  .reveal h3 {
-    font-size: 2rem;
-  }
-  
-  .reveal p {
-    font-size: 1.4rem;
-  }
-  
-  .letter-card {
-    padding: 1rem;
-    margin: 0.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .reveal h3 {
-    font-size: 1.8rem;
-  }
-  
-  .reveal .slides section {
-    padding: 10px !important;
-  }
-  
-  .letter-card {
-    width: 95%;
-  }
-}
-
-.grid-container {
-  display: grid;
-  gap: 1.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  width: 100%;
-  padding: 1rem;
-}
-
-.highlight {
-  color: var(--primary-color);
-  font-weight: 700;
-}
-
-.phonetic {
-  font-size: 1.5rem;
-  color: #666;
-  font-style: italic;
-}
-
-[data-theme="dark"] .phonetic {
-  color: #888;
-}
-</style>
-
+        @media (max-width: 768px) {
+            .slide-content {
+                padding: 1rem;
+                font-size: 0.9em;
+            }
+            .next-btn {
+                bottom: 15px;
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
-<body>
-    
-    <div id="loading" style="position: fixed; top:0; left:0; width:100%; height:100%; background:#000; z-index:9999;"></div>
-
-  <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
-
+<body data-theme="light"> <!-- Added initial theme -->
+    <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
     
     <div class="reveal">
-        <div class="slides toggle" style="background-color: #9A1600">
+        <div class="slides">
+            <!-- Slide 1 -->
+            <section>
+                <div class="slide-content">
+                    <h1>First Slide</h1>
+                    <p>Content goes here</p>
+                    <button class="next-btn" onclick="Reveal.next()">Next →</button>
+                </div>
+            </section>
 
-        <!-- Vertical Slide Container -->
-<section>
-  <!-- Slide 1: Consonant Y -->
-  <section>
-    <h3>Consonant Y</h3>
-    <p>Start of words: <strong>/y/</strong></p>
-    <p>yes yellow yacht yodel yawn</p>
-  </section>
+            <!-- Slide 2 -->
+            <section>
+                <div class="slide-content">
+                    <h2>Second Slide</h2>
+                    <p>More content here</p>
+                    <button class="next-btn" onclick="Reveal.next()">Next →</button>
+                </div>
+            </section>
 
-  <!-- Slide 2: Vowel Y (End - Long E) -->
-  <section>
-    <h3>Vowel Y at the End</h3>
-    <p>2+ syllables: <strong>Long i</strong></p>
-    <p>happy baby candy family berry</p>
-  </section>
-
-  <!-- Slide 3: Vowel Y (End - Long I) -->
-  <section>
-    <h3>Vowel Y at the End</h3>
-    <p>1 syllable: <strong>Long i</strong></p>
-    <p>fly cry sky July why</p>
-  </section>
-
-  <!-- Slide 4: Vowel Y (Middle - Short I) -->
-  <section>
-    <h3>Vowel Y in the Middle</h3>
-    <p>Short <strong>i</strong></p>
-    <p>gym myth pyramid lynx rhythm</p>
-  </section>
-
-  <!-- Slide 5: Vowel Y (Middle - Long E) -->
-  <section>
-    <h3>Vowel Y in the Middle</h3>
-    <p>Long <strong>e</strong></p>
-    <p>puppy city syrup bicycle mystery</p>
-  </section>
-
-  <!-- Slide 6: Vowel Teams -->
-  <section>
-  <h3>Y in Vowel Teams</h3>
-  <div class="grid-container">
-    <div class="letter-card">
-      <div class="highlight">AY</div>
-      <div class="phonetic">Long A</div>
-      <p>day play</p>
-    </div>
-    <div class="letter-card">
-      <div class="highlight">EY</div>
-      <div class="phonetic">Long A/E</div>
-      <p>they key</p>
-    </div>
-    <div class="letter-card">
-      <div class="highlight">OY</div>
-      <div class="phonetic">/oi/</div>
-      <p>boy toy</p>
-    </div>
-  </div>
-</section>
-
-  <!-- Slide 7: Y as a Suffix -->
-  <section>
-    <h3>Y as a Suffix</h3>
-    <p><strong>y, -ly, -ty</strong></p>
-    <p>sunny quickly city party</p>
-  </section>
-</section>
+            <!-- Slide 3 -->
+            <section>
+                <div class="slide-content">
+                    <h1>Final Slide</h1>
+                    <p>Last content section</p>
+                    <p>Last content section</p>
+                    <p>Last content section</p>
+                    <p>Last content section</p>
+                    <p>Last content section</p>
+                    <p>Last content section</p>
+                    <p>Last content section</p>
+                    <p>Last content section</p>
+                    <p>Last content section</p>
+                    <p>Last content section</p>
+                    <p>Last content section</p>
+                    <p>Last content section</p>
+                    <p>Last content section</p>
+                    <p>Last content section</p>
+                    <button class="next-btn" onclick="Reveal.slide(0)">Restart →</button>
+                </div>
+            </section>
         </div>
     </div>
 
     <script src="../dist/reveal.js"></script>
-       <script>
+    <script>
         Reveal.initialize({
+            controls: false,
+            progress: false,
+            center: true,
+            hash: true,
+            transition: 'slide',
             width: '100%',
             height: '100%',
-            margin: 0,
-            minScale: 1,
-            maxScale: 1,
-            transition: 'slide',
-            controls: true,
-            progress: true,
-            center: true,
-            hash: true
+            margin: 0.1,
+            minScale: 0.2,
+            maxScale: 1.5,
+            disableLayout: true,
+            embedded: false,
+            touch: true
         });
+
+        function toggleTheme() {
+            const currentTheme = document.body.getAttribute('data-theme');
+            document.body.setAttribute('data-theme', 
+                currentTheme === 'dark' ? 'light' : 'dark');
+        }
     </script>
-    
-   <script>
-    Reveal.addEventListener('ready', function() {
-        document.getElementById('loading').style.display = 'none';
-    });
-    
-    
-// Add theme toggle logic
-function toggleTheme() {
-  const body = document.documentElement;
-  body.dataset.theme = body.dataset.theme === 'dark' ? 'light' : 'dark';
-  Reveal.sync(); // Refresh reveal.js layout
-}
-
-
-  </script>
-
-    
 </body>
 </html>
-
-
-
