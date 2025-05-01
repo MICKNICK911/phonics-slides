@@ -1,69 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../dist/reveal.css">
     <style>
         :root {
             --bg-color: #ffffff;
             --text-color: #333333;
-            --card-bg: rgba(255, 255, 255, 0.9);
-            --theme-toggle-bg: #333;
-            --slide-bg: #9A1600;
+            --accent: #2196F3;
         }
 
-        [data-theme="dark"] {
+        body[data-theme="dark"] {
             --bg-color: #1a1a1a;
             --text-color: #ffffff;
-            --card-bg: rgba(0, 0, 0, 0.7);
-            --theme-toggle-bg: #fff;
-            --slide-bg: #2a0a00;
+            --accent: #80FF00;
         }
 
-        * {
-            transition: background-color 0.3s ease, color 0.3s ease;
+        html, body, .reveal, .slides, section {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+           /* justify-self: center;*/
+            justify-content: center;
+            align-items: center;
         }
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-        }
-
-        .reveal,
-        .reveal .slides {
-            width: 100% !important;
-            height: 100vh !important;
-            margin: 0 !important;
-            background-color: var(--slide-bg) !important;
-        }
-
-        .reveal .slides section {
-            height: 100vh !important;
-            min-height: 100vh !important;
+        .slide-content {
+            height: 100vh;
             display: flex !important;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 20px;
-            background-color: transparent !important;
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--bg-color);
+            color: var(--text-color);
         }
 
-        /* Rest of the styles remain the same as previous version */
+        .next-btn {
+            position: absolute;
+            bottom: 30px;
+            padding: 12px 24px;
+            background: var(--accent);
+            color: var(--bg-color);
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .next-btn:hover {
+            transform: scale(1.05);
+        }
+
         .theme-toggle {
             position: fixed;
             top: 20px;
             right: 20px;
             z-index: 1000;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--theme-toggle-bg);
+            padding: 10px 20px;
+            background: var(--accent);
+            color: var(--bg-color);
             border: none;
+            border-radius: 5px;
             cursor: pointer;
         }
 
-        .letter-card {
+                .letter-card {
             background: var(--card-bg);
             border-radius: 15px;
             padding: 20px;
@@ -79,12 +82,6 @@
             margin: 10px;
         }
 
-        .alpha {
-            font-size: 120px;
-            color: #0066cc;
-            font-family: 'Arial', sans-serif;
-            margin: 20px 0;
-        }
 
         .letter-image {
             width: 100%;
@@ -100,82 +97,71 @@
             margin: 10px 0;
             font-weight: bold;
         }
-
-        @media (max-width: 768px) {
-            .letter-card {
-                height: 50%;
-            }
-            
-            .alpha {
-                font-size: 50px;
-            }
-            
-            .theme-toggle {
-                top: 10px;
-                right: 10px;
-                width: 30px;
-                height: 30px;
-            }
-            
-            letter-image {
-            width: 40%;
-            height: 40%;
-            object-fit: contain;
-        }
         
-        }
+         .slide-content {
+             justify-items: center;
+            }
+            
+            
+/* small */
+@media (max-width: 980px) {
+  .slide-content p {
+    position: absolute;
+    bottom: 50px;
+  }
 
-        @media (max-width: 480px) {
-            .letter-card {
-                height: 50%;
-            }
-            
-            .theme-toggle {
-                top: 10px;
-                right: 10px;
-                width: 30px;
-                height: 30px;
-            }
-            
-                
-            .alpha {
-                font-size: 50px;
-            }
-            
-        .letter-image {
-            width: 40%;
-            height: 40%;
-            object-fit: contain;
-        }
-        
-        }
+  .next-btn {
+    bottom: 15px;
+    font-size: 1rem;
+  }
 
-        #loading {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--bg-color);
-            z-index: 9999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: opacity 0.5s ease;
-        }
+  .letter-card {
+    position: relative;
+    height: 50%;
+    padding: 0px;
+  }
+
+  .alpha {
+    font-size: 200px;
+    color: green;
+    font-family: Times New Roman;
+    margin-bottom: 150px;
+    font-weight: bold;
+  }
+
+  .theme-toggle {
+    top: 10px;
+    right: 10px;
+    width: 100px;
+    height: 30px;
+  }
+
+  /* Fix selector: added missing dot */
+  .letter-image {
+    width: 40%;
+    height: 40%;
+    object-fit: contain;
+  }
+}
+
+/* Large */
+@media (min-width: 981px) {
+  .alpha {
+    font-size: 120px;
+    color: red;
+  }
+}
     </style>
 </head>
-<body>
-    <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()"></button>
-
-    <div id="loading"></div>
-
+<body data-theme="light"> <!-- Added initial theme -->
+    <button class="theme-toggle" onclick="toggleTheme()">Theme</button>
+    
     <div class="reveal">
         <div class="slides">
-            <!-- Your existing slide sections here -->
-            <section>
-                <section><h2>English Alphabets</h2></section>
-                <section>
+            <!-- Slide 1 -->
+           <section>
+                <section class="slide-content"><h2>English Alphabets</h2></section>
+                <section class="slide-content">
                     <div class="letter-card">
                         <div class="alpha">Aa</div>
                         <p>Apple</p>
@@ -183,7 +169,7 @@
                     </div>
                 </section>
 
-                <section>
+                <section class="slide-content">
                     <!-- B -->
                     <div class="letter-card">
                                                 <div class="alpha">Bb</div>
@@ -192,7 +178,7 @@
                     </div>
                   </section>
                   
-                  <section>
+                  <section class="slide-content">
                     <!-- C -->
                     <div class="letter-card">
                                                 <div class="alpha">Cc</div>
@@ -201,7 +187,7 @@
                     </div>
                    </section>
                    
-                   <section>
+                   <section class="slide-content">
                     <!-- D -->
                     <div class="letter-card">               <div class="alpha">Dd</div>
                         <p>Dog</p>
@@ -209,7 +195,7 @@
                     </div>
                    </section>
 
-                   <section>
+                   <section class="slide-content">
                     <!-- E -->
                     <div class="letter-card">
                                                 <div class="alpha">Ee</div>
@@ -218,7 +204,7 @@
                     </div>
                    </section>
                    
-                   <section>
+                   <section class="slide-content">
                     <!-- F -->
                     <div class="letter-card" style="background-color: black">
                                                 <div class="alpha">Ff</div>
@@ -227,7 +213,7 @@
                     </div>
                    </section>
 
-                   <section>
+                   <section class="slide-content">
                     <!-- G -->
                     <div class="letter-card" style="background-color: #000000">
                                                 <div class="alpha">Gg</div>
@@ -236,7 +222,7 @@
                     </div>
                    </section>
 
-                   <section>
+                   <section class="slide-content">
                     <!-- H -->
                     <div class="letter-card">
                                                 <div class="alpha">Hh</div>
@@ -245,7 +231,7 @@
                     </div>
                    </section>
 
-                   <section>
+                   <section class="slide-content">
                     <!-- I -->
                     <div class="letter-card">
                                                 <div class="alpha">Ii</div>
@@ -254,7 +240,7 @@
                     </div>
                    </section>
 
-                   <section>
+                   <section class="slide-content">
                     <!-- J -->
                     <div class="letter-card">
                                                 <div class="alpha">Jj</div>
@@ -263,7 +249,7 @@
                     </div>
                    </section>
                    
-                   <section>
+                   <section class="slide-content">
                     <!-- K -->
                     <div class="letter-card" style="background-color: #C9D0D1">
                                                 <div class="alpha">Kk</div>
@@ -272,7 +258,7 @@
                     </div>
                    </section>
 
-                   <section>
+                   <section class="slide-content">
                     <!-- L -->
                     <div class="letter-card">
                                                 <div class="alpha">Ll</div>
@@ -281,7 +267,7 @@
                     </div>
                    </section>
                    
-                   <section>
+                   <section class="slide-content">
                     <!-- M -->
                     <div class="letter-card">
                                                 <div class="alpha">Mm</div>
@@ -290,7 +276,7 @@
                     </div>
                    </section>
 
-                   <section>
+                   <section class="slide-content">
                     <!-- N -->
                     <div class="letter-card">
                                                 <div class="alpha">Nn</div>
@@ -299,7 +285,7 @@
                     </div>
                    </section>
 
-                   <section>
+                   <section class="slide-content">
                     <!-- O -->
                     <div class="letter-card">
                                                 <div class="alpha">Oo</div>
@@ -308,7 +294,7 @@
                     </div>
                    </section>
 
-                   <section>
+                   <section class="slide-content">
                     <!-- P -->
                     <div class="letter-card">
                                                 <div class="alpha">Pp</div>
@@ -317,16 +303,16 @@
                     </div>
                    </section>
 
-                   <section>
+                   <section class="slide-content">
                     <!-- Q -->
                     <div class="letter-card" style="background-color: #004E9C">
                                                 <div class="alpha" style="color: white">Qq</div>
-                        <p>Queen</p>
+                        <p style="color: white">Queen</p>
                         <img src="../assets/images/q.jpg" class="letter-image" alt="Queen">
                     </div>
                    </section>
 
-                   <section>
+                   <section class="slide-content">
                     <!-- R -->
                     <div class="letter-card">
                                                 <div class="alpha">Rr</div>
@@ -335,7 +321,7 @@
                     </div>
                    </section>
 
-                   <section>
+                   <section class="slide-content">
                     <!-- S -->
                     <div class="letter-card" style="background-color: #FFAA00">
                                                 <div class="alpha">Ss</div>
@@ -344,7 +330,7 @@
                     </div>
                    </section>
 
-                   <section>
+                   <section class="slide-content">
                     <!-- T -->
                     <div class="letter-card">
                                                 <div class="alpha">Tt</div>
@@ -353,7 +339,7 @@
                     </div>
                    </section>
 
-                   <section>
+                   <section class="slide-content">
                     <!-- U -->
                     <div class="letter-card">
                                                 <div class="alpha">Uu</div>
@@ -362,7 +348,7 @@
                     </div>
                    </section>
 
-                   <section>
+                   <section class="slide-content">
                     <!-- V -->
                     <div class="letter-card">
                                                 <div class="alpha">Vv</div>
@@ -371,7 +357,7 @@
                     </div>
                    </section>
 
-                   <section>
+                   <section class="slide-content">
                     <!-- W -->
                     <div class="letter-card">
                                                 <div class="alpha">Ww</div>
@@ -380,7 +366,7 @@
                     </div>
                    </section>
 
-                   <section>
+                   <section class="slide-content">
                     <!-- X -->
                     <div class="letter-card" style="background-color: #FF5F00">
                                                 <div class="alpha">Xx</div>
@@ -389,7 +375,7 @@
                     </div>
                    </section>
 
-                   <section>
+                   <section class="slide-content">
                     <!-- Y -->
                     <div class="letter-card" style="background-color: black">
                                                 <div class="alpha">Yy</div>
@@ -398,7 +384,7 @@
                     </div>
                    </section>
 
-                   <section>
+                   <section class="slide-content">
                     <!-- Z -->
                     <div class="letter-card">
                                                 <div class="alpha">Zz</div>
@@ -413,45 +399,27 @@
 
     <script src="../dist/reveal.js"></script>
     <script>
-        // Reveal.js initialization
         Reveal.initialize({
-           // controls: true,
-           // progress: true,
+            controls: false,
+            progress: false,
             center: true,
             hash: true,
             transition: 'slide',
-          //  mobileLayout: true,
-           // touch: true,
-           // hideAddressBar: true,
             width: '100%',
-            height: '100%'
+            height: '100%',
+           // margin: 0.1,
+            minScale: 0.2,
+            maxScale: 1.5,
+            disableLayout: true,
+            embedded: false,
+            touch: true
         });
 
-        // Theme toggle functionality
         function toggleTheme() {
-            const body = document.body;
-            const currentTheme = body.getAttribute('data-theme');
-            if (currentTheme === 'dark') {
-                body.removeAttribute('data-theme');
-                localStorage.setItem('theme', 'light');
-            } else {
-                body.setAttribute('data-theme', 'dark');
-                localStorage.setItem('theme', 'dark');
-            }
+            const currentTheme = document.body.getAttribute('data-theme');
+            document.body.setAttribute('data-theme', 
+                currentTheme === 'dark' ? 'light' : 'dark');
         }
-
-        // Load saved theme
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark') {
-            document.body.setAttribute('data-theme', 'dark');
-        }
-
-        // Hide loading screen when Reveal is ready
-        Reveal.addEventListener('ready', function() {
-            const loading = document.getElementById('loading');
-            loading.style.opacity = '0';
-            setTimeout(() => loading.remove(), 500);
-        });
     </script>
 </body>
 </html>
