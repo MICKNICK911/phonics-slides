@@ -15,42 +15,19 @@
             --accent: #80FF00;
         }
 
+        body,
+        .reveal,
+        .reveal .slides,
+        .reveal .slides section {
+            background-color: var(--bg-color) !important;
+            color: var(--text-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
         html, body, .reveal, .slides, section {
             height: 100%;
             margin: 0;
             padding: 0;
-           /* justify-self: center;*/
-            justify-content: center;
-            align-items: center;
-        }
-
-        .slide-content {
-            height: 100vh;
-            display: flex !important;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 2rem;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-        }
-
-        .next-btn {
-            position: absolute;
-            bottom: 30px;
-            padding: 12px 24px;
-            background: var(--accent);
-            color: var(--bg-color);
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 1.1rem;
-            transition: transform 0.3s ease;
-        }
-
-        .next-btn:hover {
-            transform: scale(1.05);
         }
 
         .theme-toggle {
@@ -66,333 +43,359 @@
             cursor: pointer;
         }
 
-                .letter-card {
-            background: var(--card-bg);
-            border-radius: 15px;
-            padding: 20px;
-            text-align: center;
-            width: 90%;
-            max-width: 600px;
-            min-height: 50vh;
-            display: flex;
+        .case-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            padding: 10px 20px;
+            background: var(--accent);
+            color: var(--bg-color);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .slide-content {
+            height: 100vh;
+            display: flex !important;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            margin: 10px;
+            text-align: center;
+            padding: 20px;
         }
 
-
-        .letter-image {
+        .letters-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-content: center;
+            gap: 30px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex: 1;
             width: 100%;
-            max-width: 300px;
-            height: auto;
-            margin: 10px 0;
-            object-fit: contain;
         }
 
-        p {
-            color: var(--text-color);
-            font-size: clamp(20px, 4vw, 32px);
-            margin: 10px 0;
-            font-weight: bold;
+        .letters-container.consonants {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 20px;
+            place-items: center;
+            max-width: 90%;
+        }
+
+        .vowel, .consonant {
+            font-size: 4rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            font-family: 'Times New Roman', serif;
+            color: red;
+            min-width: 80px;
+            text-align: center;
+        }
+
+        .vowel.clicked, .consonant.clicked {
+            color: yellow !important;
         }
         
-         .slide-content {
-             justify-items: center;
+        /* Add Custom Letters Slide Styles */
+        .custom-input-container {
+            margin: 2rem auto;
+            max-width: 600px;
+            display: flex;
+            gap: 10px;
+            padding: 20px;
+        }
+
+        #letterInput {
+            flex: 1;
+            padding: 10px;
+            font-size: 1.2rem;
+            border: 2px solid var(--accent);
+            border-radius: 5px;
+            background: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        #generateLetters {
+            padding: 10px 20px;
+            background: var(--accent);
+            color: var(--bg-color);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        #generateLetters:hover {
+            transform: scale(1.05);
+        }
+
+        .custom-letters-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+
+        /* CVC Grid Styles */
+        .cvc-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .cvc-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .cvc-label {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .cvc-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+
+        .cvc-list li {
+            margin: 0.5rem 0;
+        }
+
+        .cvc-list li span {
+            font-size: 1.2rem;
+            margin: 0 2px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            font-family: 'Times New Roman', serif;
+            color: red;
+            display: inline-block;
+            min-width: 1.2em;
+        }
+
+        .cvc-list li span.clicked {
+            color: yellow !important;
+        }
+
+        @media (max-width: 980px) {
+            .letters-container.consonants {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 15px;
             }
             
+            .vowel, .consonant {
+                font-size: 3rem;
+                min-width: 60px;
+            }
+
+            .cvc-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 15px;
+            }
             
-/* small */
-@media (max-width: 980px) {
-  .slide-content p {
-    position: absolute;
-    bottom: 50px;
-  }
+            .cvc-label {
+                font-size: 2.5rem;
+            }
+        }
 
-  .next-btn {
-    bottom: 15px;
-    font-size: 1rem;
-  }
+        @media (max-width: 480px) {
+            .letters-container.consonants {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 10px;
+            }
+            
+            .vowel, .consonant {
+                font-size: 2.5rem;
+            }
 
-  .letter-card {
-    position: relative;
-    height: 50%;
-    padding: 0px;
-  }
-
-  .alpha {
-    font-size: 200px;
-    color: green;
-    font-family: Times New Roman;
-    margin-bottom: 150px;
-    font-weight: bold;
-  }
-
-  .theme-toggle {
-    top: 10px;
-    right: 10px;
-    width: 100px;
-    height: 30px;
-  }
-
-  /* Fix selector: added missing dot */
-  .letter-image {
-    width: 40%;
-    height: 40%;
-    object-fit: contain;
-  }
-}
-
-/* Large */
-@media (min-width: 981px) {
-  .alpha {
-    font-size: 120px;
-    color: red;
-  }
-}
+            .cvc-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+            
+            .cvc-label {
+                font-size: 2rem;
+            }
+            
+            .cvc-list li span {
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
-<body data-theme="light"> <!-- Added initial theme -->
+<body data-theme="light" data-case="lower">
+    <button class="case-toggle" onclick="toggleCase()">Case: Lower</button>
     <button class="theme-toggle" onclick="toggleTheme()">Theme</button>
     
     <div class="reveal">
         <div class="slides">
-            <!-- Slide 1 -->
-           <section>
-                <section class="slide-content"><h2>English Alphabets</h2></section>
+            <section>
+                <!-- Slide 1: Short Vowels -->
                 <section class="slide-content">
-                    <div class="letter-card">
-                        <div class="alpha">Aa</div>
-                        <p>Apple</p>
-                        <img src="../assets/images/a.jpg" class="letter-image" alt="Apple">
+                    <h2>Short Vowels</h2>
+                    <div class="letters-container">
+                        <span class="vowel">a</span>
+                        <span class="vowel">e</span>
+                        <span class="vowel">i</span>
+                        <span class="vowel">o</span>
+                        <span class="vowel">u</span>
                     </div>
                 </section>
 
+                <!-- Slide 2: Long Vowels -->
                 <section class="slide-content">
-                    <!-- B -->
-                    <div class="letter-card">
-                                                <div class="alpha">Bb</div>
-                        <p>Ball</p>
-                        <img src="../assets/images/b1.jpg" class="letter-image" alt="Ball">
+                    <h2>Long Vowels</h2>
+                    <div class="letters-container">
+                        <span class="vowel">ā</span>
+                        <span class="vowel">ē</span>
+                        <span class="vowel">ī</span>
+                        <span class="vowel">ō</span>
+                        <span class="vowel">ū</span>
                     </div>
-                  </section>
-                  
-                  <section class="slide-content">
-                    <!-- C -->
-                    <div class="letter-card">
-                                                <div class="alpha">Cc</div>
-                        <p>Cat</p>
-                        <img src="../assets/images/c.jpg" class="letter-image" alt="Cat">
-                    </div>
-                   </section>
-                   
-                   <section class="slide-content">
-                    <!-- D -->
-                    <div class="letter-card">               <div class="alpha">Dd</div>
-                        <p>Dog</p>
-                        <img src="../assets/images/d.jpg" class="letter-image" alt="Dog">
-                    </div>
-                   </section>
+                </section>
 
-                   <section class="slide-content">
-                    <!-- E -->
-                    <div class="letter-card">
-                                                <div class="alpha">Ee</div>
-                        <p>Egg</p>
-                        <img src="../assets/images/e.jpg" class="letter-image" alt="Egg">
+                <!-- Slide 3: Consonants -->
+                <section class="slide-content">
+                    <h2>Consonants</h2>
+                    <div class="letters-container consonants">
+                        <span class="consonant">b</span>
+                        <span class="consonant">c</span>
+                        <span class="consonant">d</span>
+                        <span class="consonant">f</span>
+                        <span class="consonant">g</span>
+                        <span class="consonant">h</span>
+                        <span class="consonant">j</span>
+                        <span class="consonant">k</span>
+                        <span class="consonant">l</span>
+                        <span class="consonant">m</span>
+                        <span class="consonant">n</span>
+                        <span class="consonant">p</span>
+                        <span class="consonant">q</span>
+                        <span class="consonant">r</span>
+                        <span class="consonant">s</span>
+                        <span class="consonant">t</span>
+                        <span class="consonant">v</span>
+                        <span class="consonant">w</span>
+                        <span class="consonant">x</span>
+                        <span class="consonant">y</span>
+                        <span class="consonant">z</span>
                     </div>
-                   </section>
-                   
-                   <section class="slide-content">
-                    <!-- F -->
-                    <div class="letter-card" style="background-color: black">
-                                                <div class="alpha">Ff</div>
-                        <p style="color: white">Fish</p>
-                        <img src="../assets/images/f.jpg" class="letter-image" alt="Fish">
-                    </div>
-                   </section>
+                </section>
 
-                   <section class="slide-content">
-                    <!-- G -->
-                    <div class="letter-card" style="background-color: #000000">
-                                                <div class="alpha">Gg</div>
-                        <p style="color: white">Goat</p>
-                        <img style="height: 50%;" src="../assets/images/g1.jpg" class="letter-image" alt="Goat">
-                    </div>
-                   </section>
+                <!-- Slide 4: CVC Words -->
+                <section class="slide-content">
+                    <h2>CVC Words</h2>
+                    <div class="cvc-grid">
+                        <!-- A Column -->
+                        <div class="cvc-column">
+                            <span class="vowel cvc-label">a</span>
+                            <ul class="cvc-list">
+                                <li><span class="consonant">c</span><span class="vowel">a</span><span class="consonant">t</span></li>
+                                <li><span class="consonant">b</span><span class="vowel">a</span><span class="consonant">t</span></li>
+                                <li><span class="consonant">h</span><span class="vowel">a</span><span class="consonant">t</span></li>
+                                <li><span class="consonant">m</span><span class="vowel">a</span><span class="consonant">t</span></li>
+                                <li><span class="consonant">r</span><span class="vowel">a</span><span class="consonant">t</span></li>
+                                <li><span class="consonant">s</span><span class="vowel">a</span><span class="consonant">t</span></li>
+                                <li><span class="consonant">p</span><span class="vowel">a</span><span class="consonant">t</span></li>
+                                <li><span class="consonant">f</span><span class="vowel">a</span><span class="consonant">t</span></li>
+                                <li><span class="consonant">v</span><span class="vowel">a</span><span class="consonant">n</span></li>
+                                <li><span class="consonant">m</span><span class="vowel">a</span><span class="consonant">p</span></li>
+                            </ul>
+                        </div>
 
-                   <section class="slide-content">
-                    <!-- H -->
-                    <div class="letter-card">
-                                                <div class="alpha">Hh</div>
-                        <p>Hat</p>
-                        <img src="../assets/images/h.jpg" class="letter-image" alt="Hat">
-                    </div>
-                   </section>
+                        <!-- E Column -->
+                        <div class="cvc-column">
+                            <span class="vowel cvc-label">e</span>
+                            <ul class="cvc-list">
+                                <li><span class="consonant">b</span><span class="vowel">e</span><span class="consonant">d</span></li>
+                                <li><span class="consonant">r</span><span class="vowel">e</span><span class="consonant">d</span></li>
+                                <li><span class="consonant">p</span><span class="vowel">e</span><span class="consonant">t</span></li>
+                                <li><span class="consonant">w</span><span class="vowel">e</span><span class="consonant">t</span></li>
+                                <li><span class="consonant">n</span><span class="vowel">e</span><span class="consonant">t</span></li>
+                                <li><span class="consonant">l</span><span class="vowel">e</span><span class="consonant">g</span></li>
+                                <li><span class="consonant">p</span><span class="vowel">e</span><span class="consonant">n</span></li>
+                                <li><span class="consonant">h</span><span class="vowel">e</span><span class="consonant">n</span></li>
+                                <li><span class="consonant">j</span><span class="vowel">e</span><span class="consonant">t</span></li>
+                                <li><span class="consonant">m</span><span class="vowel">e</span><span class="consonant">n</span></li>
+                            </ul>
+                        </div>
 
-                   <section class="slide-content">
-                    <!-- I -->
-                    <div class="letter-card">
-                                                <div class="alpha">Ii</div>
-                        <p>Igloo</p>
-                        <img src="../assets/images/i.jpg" class="letter-image" alt="Igloo">
-                    </div>
-                   </section>
+                        <!-- I Column -->
+                        <div class="cvc-column">
+                            <span class="vowel cvc-label">i</span>
+                            <ul class="cvc-list">
+                                <li><span class="consonant">p</span><span class="vowel">i</span><span class="consonant">g</span></li>
+                                <li><span class="consonant">d</span><span class="vowel">i</span><span class="consonant">g</span></li>
+                                <li><span class="consonant">s</span><span class="vowel">i</span><span class="consonant">t</span></li>
+                                <li><span class="consonant">h</span><span class="vowel">i</span><span class="consonant">t</span></li>
+                                <li><span class="consonant">l</span><span class="vowel">i</span><span class="consonant">p</span></li>
+                                <li><span class="consonant">z</span><span class="vowel">i</span><span class="consonant">p</span></li>
+                                <li><span class="consonant">p</span><span class="vowel">i</span><span class="consonant">n</span></li>
+                                <li><span class="consonant">w</span><span class="vowel">i</span><span class="consonant">n</span></li>
+                                <li><span class="consonant">f</span><span class="vowel">i</span><span class="consonant">n</span></li>
+                                <li><span class="consonant">m</span><span class="vowel">i</span><span class="consonant">x</span></li>
+                            </ul>
+                        </div>
 
-                   <section class="slide-content">
-                    <!-- J -->
-                    <div class="letter-card">
-                                                <div class="alpha">Jj</div>
-                        <p>Jug</p>
-                        <img src="../assets/images/j.jpg" class="letter-image" alt="Jug">
-                    </div>
-                   </section>
-                   
-                   <section class="slide-content">
-                    <!-- K -->
-                    <div class="letter-card" style="background-color: #C9D0D1">
-                                                <div class="alpha">Kk</div>
-                        <p>Kite</p>
-                        <img src="../assets/images/k.jpg" class="letter-image" alt="Kite">
-                    </div>
-                   </section>
+                        <!-- O Column -->
+                        <div class="cvc-column">
+                            <span class="vowel cvc-label">o</span>
+                            <ul class="cvc-list">
+                                <li><span class="consonant">d</span><span class="vowel">o</span><span class="consonant">g</span></li>
+                                <li><span class="consonant">l</span><span class="vowel">o</span><span class="consonant">g</span></li>
+                                <li><span class="consonant">h</span><span class="vowel">o</span><span class="consonant">p</span></li>
+                                <li><span class="consonant">t</span><span class="vowel">o</span><span class="consonant">p</span></li>
+                                <li><span class="consonant">p</span><span class="vowel">o</span><span class="consonant">t</span></li>
+                                <li><span class="consonant">d</span><span class="vowel">o</span><span class="consonant">t</span></li>
+                                <li><span class="consonant">f</span><span class="vowel">o</span><span class="consonant">x</span></li>
+                                <li><span class="consonant">b</span><span class="vowel">o</span><span class="consonant">x</span></li>
+                                <li><span class="consonant">m</span><span class="vowel">o</span><span class="consonant">p</span></li>
+                                <li><span class="consonant">h</span><span class="vowel">o</span><span class="consonant">t</span></li>
+                            </ul>
+                        </div>
 
-                   <section class="slide-content">
-                    <!-- L -->
-                    <div class="letter-card">
-                                                <div class="alpha">Ll</div>
-                        <p>Lemon</p>
-                        <img src="../assets/images/l.jpg" class="letter-image" alt="Lemon">
+                        <!-- U Column -->
+                        <div class="cvc-column">
+                            <span class="vowel cvc-label">u</span>
+                            <ul class="cvc-list">
+                                <li><span class="consonant">c</span><span class="vowel">u</span><span class="consonant">p</span></li>
+                                <li><span class="consonant">s</span><span class="vowel">u</span><span class="consonant">n</span></li>
+                                <li><span class="consonant">b</span><span class="vowel">u</span><span class="consonant">g</span></li>
+                                <li><span class="consonant">r</span><span class="vowel">u</span><span class="consonant">g</span></li>
+                                <li><span class="consonant">m</span><span class="vowel">u</span><span class="consonant">d</span></li>
+                                <li><span class="consonant">c</span><span class="vowel">u</span><span class="consonant">t</span></li>
+                                <li><span class="consonant">n</span><span class="vowel">u</span><span class="consonant">t</span></li>
+                                <li><span class="consonant">h</span><span class="vowel">u</span><span class="consonant">g</span></li>
+                                <li><span class="consonant">j</span><span class="vowel">u</span><span class="consonant">g</span></li>
+                                <li><span class="consonant">b</span><span class="vowel">u</span><span class="consonant">s</span></li>
+                            </ul>
+                        </div>
                     </div>
-                   </section>
-                   
-                   <section class="slide-content">
-                    <!-- M -->
-                    <div class="letter-card">
-                                                <div class="alpha">Mm</div>
-                        <p>Mango</p>
-                        <img src="../assets/images/m.jpg" class="letter-image" alt="Mango">
+                </section>
+                
+                <section class="slide-content">
+                    <h2>Custom Letters</h2>
+                    <div class="custom-input-container">
+                        <input type="text" id="letterInput" placeholder="Enter letters separated by commas (a,b,c)">
+                        <button id="generateLetters" onclick="generateCustomLetters()">Generate</button>
                     </div>
-                   </section>
-
-                   <section class="slide-content">
-                    <!-- N -->
-                    <div class="letter-card">
-                                                <div class="alpha">Nn</div>
-                        <p>Net</p>
-                        <img src="../assets/images/n.jpg" class="letter-image" alt="Net">
-                    </div>
-                   </section>
-
-                   <section class="slide-content">
-                    <!-- O -->
-                    <div class="letter-card">
-                                                <div class="alpha">Oo</div>
-                        <p>Orange</p>
-                        <img src="../assets/images/o.jpg" class="letter-image" alt="Orange">
-                    </div>
-                   </section>
-
-                   <section class="slide-content">
-                    <!-- P -->
-                    <div class="letter-card">
-                                                <div class="alpha">Pp</div>
-                        <p>Pot</p>
-                        <img src="../assets/images/p1.jpg" class="letter-image" alt="Pot">
-                    </div>
-                   </section>
-
-                   <section class="slide-content">
-                    <!-- Q -->
-                    <div class="letter-card" style="background-color: #004E9C">
-                                                <div class="alpha" style="color: white">Qq</div>
-                        <p style="color: white">Queen</p>
-                        <img src="../assets/images/q.jpg" class="letter-image" alt="Queen">
-                    </div>
-                   </section>
-
-                   <section class="slide-content">
-                    <!-- R -->
-                    <div class="letter-card">
-                                                <div class="alpha">Rr</div>
-                        <p>Rat</p>
-                        <img src="../assets/images/r.jpg" class="letter-image" alt="Rat">
-                    </div>
-                   </section>
-
-                   <section class="slide-content">
-                    <!-- S -->
-                    <div class="letter-card" style="background-color: #FFAA00">
-                                                <div class="alpha">Ss</div>
-                        <p>Sun</p>
-                        <img style="height: 60%;" src="../assets/images/s.jpg" class="letter-image" alt="Sun">
-                    </div>
-                   </section>
-
-                   <section class="slide-content">
-                    <!-- T -->
-                    <div class="letter-card">
-                                                <div class="alpha">Tt</div>
-                        <p>Tin</p>
-                        <img src="../assets/images/t.jpg" class="letter-image" alt="Tin">
-                    </div>
-                   </section>
-
-                   <section class="slide-content">
-                    <!-- U -->
-                    <div class="letter-card">
-                                                <div class="alpha">Uu</div>
-                        <p>Umbrella</p>
-                        <img src="../assets/images/u.jpg" class="letter-image" alt="Umbrella">
-                    </div>
-                   </section>
-
-                   <section class="slide-content">
-                    <!-- V -->
-                    <div class="letter-card">
-                                                <div class="alpha">Vv</div>
-                        <p>Van</p>
-                        <img src="../assets/images/v.jpg" class="letter-image" alt="Van">
-                    </div>
-                   </section>
-
-                   <section class="slide-content">
-                    <!-- W -->
-                    <div class="letter-card">
-                                                <div class="alpha">Ww</div>
-                        <p>Watch</p>
-                        <img src="../assets/images/w.jpg" class="letter-image" alt="Watch">
-                    </div>
-                   </section>
-
-                   <section class="slide-content">
-                    <!-- X -->
-                    <div class="letter-card" style="background-color: #FF5F00">
-                                                <div class="alpha">Xx</div>
-                        <p>Fo<span style="color: yellow">x</span></p>
-                        <img src="../assets/images/x.jpg" class="letter-image" alt="fox">
-                    </div>
-                   </section>
-
-                   <section class="slide-content">
-                    <!-- Y -->
-                    <div class="letter-card" style="background-color: black">
-                                                <div class="alpha">Yy</div>
-                        <p style="color: white;">Yam</p>
-                        <img src="../assets/images/y.jpg" class="letter-image" alt="Yam">
-                    </div>
-                   </section>
-
-                   <section class="slide-content">
-                    <!-- Z -->
-                    <div class="letter-card">
-                                                <div class="alpha">Zz</div>
-                        <p>Zebra</p>
-                        <img src="../assets/images/z.jpg" class="letter-image" alt="Zebra">
-                    </div>
-                   </section>
-                <!-- Add all other letter sections following the same pattern -->
+                    <div class="letters-container custom-letters-container"></div>
+                </section>
+                
             </section>
         </div>
     </div>
@@ -407,12 +410,9 @@
             transition: 'slide',
             width: '100%',
             height: '100%',
-           // margin: 0.1,
-            minScale: 0.2,
-            maxScale: 1.5,
-            disableLayout: true,
-            embedded: false,
-            touch: true
+            touch: true,
+            backgroundTransition: 'none',
+            navigationMode: 'vertical'
         });
 
         function toggleTheme() {
@@ -420,6 +420,81 @@
             document.body.setAttribute('data-theme', 
                 currentTheme === 'dark' ? 'light' : 'dark');
         }
+
+        function toggleCase() {
+            const currentCase = document.body.getAttribute('data-case');
+            const newCase = currentCase === 'lower' ? 'upper' : 'lower';
+            document.body.setAttribute('data-case', newCase);
+            document.querySelector('.case-toggle').textContent = `Case: ${newCase.charAt(0).toUpperCase() + newCase.slice(1)}`;
+            
+            document.querySelectorAll('.vowel, .consonant, .cvc-list li span').forEach(letter => {
+                const original = letter.dataset.original || letter.textContent;
+                letter.dataset.original = original;
+                letter.textContent = newCase === 'upper' ? original.toUpperCase() : original.toLowerCase();
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.vowel, .consonant, .cvc-list li span').forEach(letter => {
+                letter.dataset.original = letter.textContent;
+            });
+
+            document.addEventListener('click', function(event) {
+                const letter = event.target.closest('.vowel, .consonant, .cvc-list li span');
+                if (letter) letter.classList.toggle('clicked');
+            });
+
+            document.addEventListener('touchstart', function(event) {
+                const letter = event.target.closest('.vowel, .consonant, .cvc-list li span');
+                if (letter) {
+                    event.preventDefault();
+                    letter.classList.toggle('clicked');
+                }
+            }, { passive: false });
+        });
+        
+        // Add Custom Letters Generation Function
+        function generateCustomLetters() {
+            const input = document.getElementById('letterInput').value;
+            const container = document.querySelector('.custom-letters-container');
+            container.innerHTML = '';
+            
+            const letters = input.split(',').map(l => l.trim()).filter(l => l);
+            const vowels = ['a', 'e', 'i', 'o', 'u', 'ā', 'ē', 'ī', 'ō', 'ū'];
+
+            letters.forEach(letter => {
+                const isVowel = vowels.includes(letter.toLowerCase());
+                const span = document.createElement('span');
+                span.className = isVowel ? 'vowel' : 'consonant';
+                span.textContent = letter;
+                span.dataset.original = letter;
+                container.appendChild(span);
+            });
+
+            // Update case based on current setting
+            toggleCase(true);
+        }
+
+        // Modified Toggle Case Function
+        function toggleCase(forceUpdate) {
+            const currentCase = document.body.getAttribute('data-case');
+            const newCase = forceUpdate ? currentCase : 
+                          currentCase === 'lower' ? 'upper' : 'lower';
+            
+            if (!forceUpdate) {
+                document.body.setAttribute('data-case', newCase);
+                document.querySelector('.case-toggle').textContent = `Case: ${newCase.charAt(0).toUpperCase() + newCase.slice(1)}`;
+            }
+            
+            document.querySelectorAll('.vowel, .consonant, .cvc-list li span, .custom-letters-container span').forEach(letter => {
+                const original = letter.dataset.original || letter.textContent;
+                const currentCaseState = forceUpdate ? currentCase : newCase;
+                letter.textContent = currentCaseState === 'upper' ? 
+                    original.toUpperCase() : original.toLowerCase();
+            });
+        }
+
+        
     </script>
 </body>
 </html>

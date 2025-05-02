@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../dist/reveal.css">
+    <style>
+        /* Add Custom Letters Slide Styles */
+        .custom-input-container {
+            margin: 2rem auto;
+            max-width: 600px;
+            display: flex;
+            gap: 10px;
+            padding: 20px;
+        }
+
+        #letterInput {
+            flex: 1;
+            padding: 10px;
+            font-size: 1.2rem;
+            border: 2px solid var(--accent);
+            border-radius: 5px;
+            background: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        #generateLetters {
+            padding: 10px 20px;
+            background: var(--accent);
+            color: var(--bg-color);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        #generateLetters:hover {
+            transform: scale(1.05);
+        }
+
+        .custom-letters-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body data-theme="light" data-case="lower">
+    <!-- Existing buttons remain -->
+    <button class="case-toggle" onclick="toggleCase()">Case: Lower</button>
+    <button class="theme-toggle" onclick="toggleTheme()">Theme</button>
+    
+    <div class="reveal">
+        <div class="slides">
+            <!-- Existing slides remain -->
+
+            <!-- New Custom Letters Slide -->
+            <section>
+                <section class="slide-content">
+                    <h2>Custom Letters</h2>
+                    <div class="custom-input-container">
+                        <input type="text" id="letterInput" placeholder="Enter letters separated by commas (a,b,c)">
+                        <button id="generateLetters" onclick="generateCustomLetters()">Generate</button>
+                    </div>
+                    <div class="letters-container custom-letters-container"></div>
+                </section>
+            </section>
+        </div>
+    </div>
+
+    <script src="../dist/reveal.js"></script>
+    <script>
+        // Add Custom Letters Generation Function
+        function generateCustomLetters() {
+            const input = document.getElementById('letterInput').value;
+            const container = document.querySelector('.custom-letters-container');
+            container.innerHTML = '';
+            
+            const letters = input.split(',').map(l => l.trim()).filter(l => l);
+            const vowels = ['a', 'e', 'i', 'o', 'u', 'ā', 'ē', 'ī', 'ō', 'ū'];
+
+            letters.forEach(letter => {
+                const isVowel = vowels.includes(letter.toLowerCase());
+                const span = document.createElement('span');
+                span.className = isVowel ? 'vowel' : 'consonant';
+                span.textContent = letter;
+                span.dataset.original = letter;
+                container.appendChild(span);
+            });
+
+            // Update case based on current setting
+            toggleCase(true);
+        }
+
+        // Modified Toggle Case Function
+        function toggleCase(forceUpdate) {
+            const currentCase = document.body.getAttribute('data-case');
+            const newCase = forceUpdate ? currentCase : 
+                          currentCase === 'lower' ? 'upper' : 'lower';
+            
+            if (!forceUpdate) {
+                document.body.setAttribute('data-case', newCase);
+                document.querySelector('.case-toggle').textContent = `Case: ${newCase.charAt(0).toUpperCase() + newCase.slice(1)}`;
+            }
+            
+            document.querySelectorAll('.vowel, .consonant, .cvc-list li span, .custom-letters-container span').forEach(letter => {
+                const original = letter.dataset.original || letter.textContent;
+                const currentCaseState = forceUpdate ? currentCase : newCase;
+                letter.textContent = currentCaseState === 'upper' ? 
+                    original.toUpperCase() : original.toLowerCase();
+            });
+        }
+
+        // Keep other functions and initialization the same
+    </script>
+</body>
+</html>
