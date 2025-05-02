@@ -148,7 +148,7 @@
 @media (min-width: 981px) {
   .alpha {
     font-size: 120px;
-    color: red;
+    color: blue;
   }
 }
     </style>
@@ -160,7 +160,10 @@
         <div class="slides">
             <!-- Slide 1 -->
            <section>
-                <section class="slide-content"><h2>English Alphabets</h2></section>
+                <section class="slide-content">
+                    <div class="alpha">English Alphabets</div>
+                </section>
+
                 <section class="slide-content">
                     <div class="letter-card">
                         <div class="alpha">Aa</div>
@@ -400,7 +403,7 @@
     <script src="../dist/reveal.js"></script>
     <script>
         Reveal.initialize({
-            controls: false,
+            controls: true,
             progress: false,
             center: true,
             hash: true,
