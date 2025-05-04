@@ -1,112 +1,204 @@
-<section class="slide-content" data-transition="fade">
-    <div class="nav-grid">
-        <button class="nav-btn" data-slide-h="1" data-slide-v="0">
-            <span class="nav-title">Introduction</span>
-            <span class="nav-sub">Get started</span>
-        </button>
-        
-        <button class="nav-btn" data-slide-h="2" data-slide-v="0">
-            <span class="nav-title">Key Features</span>
-            <span class="nav-sub">Explore capabilities</span>
-        </button>
-        
-        <button class="nav-btn" data-slide-h="3" data-slide-v="0">
-            <span class="nav-title">Case Studies</span>
-            <span class="nav-sub">Real examples</span>
-        </button>
-        
-        <button class="nav-btn" data-slide-h="4" data-slide-v="0">
-            <span class="nav-title">Statistics</span>
-            <span class="nav-sub">Data insights</span>
-        </button>
-        
-        <button class="nav-btn" data-slide-h="5" data-slide-v="0">
-            <span class="nav-title">Team</span>
-            <span class="nav-sub">Who we are</span>
-        </button>
-        
-        <button class="nav-btn" data-slide-h="6" data-slide-v="0">
-            <span class="nav-title">Contact</span>
-            <span class="nav-sub">Get in touch</span>
-        </button>
-    </div>
+
+<section class="slide-content">
+  <div class="letters-container">
+    <span class="digraph">sh</span>
+    <span class="digraph">i</span>
+    <span class="digraph">p</span>
+  </div>
+</section>
+<section class="slide-content">
+  <div class="letters-container">
+    <span class="digraph">ch</span>
+    <span class="digraph">a</span>
+    <span class="digraph">t</span>
+  </div>
+</section>
+<section class="slide-content">
+  <div class="letters-container">
+    <span class="digraph">m</span>
+    <span class="digraph">a</span>
+    <span class="digraph">t</span>
+    <span class="digraph">ch</span>
+  </div>
+</section>
+<section class="slide-content">
+  <div class="letters-container">
+    <span class="digraph">th</span>
+    <span class="digraph">i</span>
+    <span class="digraph">n</span>
+  </div>
+</section>
+<section class="slide-content">
+  <div class="letters-container">
+    <span class="digraph">s</span>
+    <span class="digraph">o</span>
+    <span class="digraph">ng</span>
+  </div>
+</section>
+<section class="slide-content">
+  <div class="letters-container">
+    <span class="digraph">p</span>
+    <span class="digraph">i</span>
+    <span class="digraph">n</span>
+    <span class="digraph">k</span>
+  </div>
+</section>
+<section class="slide-content">
+  <div class="letters-container">
+    <span class="digraph">sh</span>
+    <span class="digraph">o</span>
+    <span class="digraph">t</span>
+  </div>
+</section>
+<section class="slide-content">
+  <div class="letters-container">
+    <span class="digraph">ch</span>
+    <span class="digraph">o</span>
+    <span class="digraph">p</span>
+  </div>
+</section>
+<section class="slide-content">
+  <div class="letters-container">
+    <span class="digraph">f</span>
+    <span class="digraph">e</span>
+    <span class="digraph">t</span>
+    <span class="digraph">ch</span>
+  </div>
+</section>
+<section class="slide-content">
+  <div class="letters-container">
+    <span class="digraph">th</span>
+    <span class="digraph">e</span>
+  </div>
+</section>
+<section class="slide-content">
+  <div class="letters-container">
+    <span class="digraph">th</span>
+    <span class="digraph">a</span>
+    <span class="digraph">n</span>
+    <span class="digraph">k</span>
+  </div>
+</section>
+<section class="slide-content">
+  <div class="letters-container">
+    <span class="digraph">l</span>
+    <span class="digraph">o</span>
+    <span class="digraph">n</span>
+    <span class="digraph">g</span>
+  </div>
+</section>
+<section class="slide-content">
+  <div class="letters-container">
+    <span class="digraph">l</span>
+    <span class="digraph">i</span>
+    <span class="digraph">n</span>
+    <span class="digraph">k</span>
+  </div>
+</section>
+<section class="slide-content">
+  <div class="letters-container">
+    <span class="digraph">wh</span>
+    <span class="digraph">i</span>
+    <span class="digraph">ch</span>
+  </div>
+</section>
+<section class="slide-content">
+  <div class="letters-container">
+    <span class="digraph">ph</span>
+    <span class="digraph">o</span>
+    <span class="digraph">n</span>
+    <span class="digraph">e</span>
+  </div>
+</section>
+<section class="slide-content">
+  <div class="letters-container">
+    <span class="digraph">tr</span>
+    <span class="digraph">a</span>
+    <span class="digraph">ck</span>
+  </div>
 </section>
 
-<style>
-.nav-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-    padding: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.nav-btn {
-    border: none;
-    background: #ffffff;
-    padding: 2rem;
-    border-radius: 16px;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    text-align: left;
-    backdrop-filter: blur(10px);
-    background: rgba(255, 255, 255, 0.9);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.nav-btn:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
-    background: rgba(255, 255, 255, 1);
-}
-
-.nav-title {
-    display: block;
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: #2d3436;
-    margin-bottom: 0.5rem;
-}
-
-.nav-sub {
-    display: block;
-    font-size: 1rem;
-    color: #636e72;
-    opacity: 0.8;
-}
-
-/* Modern slide background */
-.slide-content {
-    background: linear-gradient(135deg, #f6f7f9 0%, #e9ebee 100%);
-}
-
-/* Mobile optimization */
-@media (max-width: 768px) {
-    .nav-grid {
-        grid-template-columns: 1fr;
-        padding: 1rem;
-    }
-    
-    .nav-btn {
-        padding: 1.5rem;
-    }
-}
-</style>
-
-<script>
-document.querySelectorAll('.nav-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-        const h = parseInt(btn.dataset.slideH);
-        const v = parseInt(btn.dataset.slideV);
-        Reveal.slide(h, v);
-        
-        // Add micro-interaction feedback
-        btn.style.transform = 'scale(0.98)';
-        setTimeout(() => {
-            btn.style.transform = '';
-        }, 150);
-    });
-});
-</script>
+<section class="slide-content">
+  <div class="letters-container">
+    <span class="digraph">w</span>
+    <span class="digraph">r</span>
+    <span class="digraph">i</span>
+    <span class="digraph">t</span>
+    <span class="digraph">e</span>
+  </div>
+</section>
+<section class="slide-content">
+  <div class="letters-container">
+    <span class="digraph">k</span>
+    <span class="digraph">n</span>
+    <span class="digraph">o</span>
+    <span class="digraph">w</span>
+  </div>
+</section>
+<section class="slide-content">
+  <div class="letters-container">
+    <span class="digraph">gn</span>
+    <span class="digraph">a</span>
+    <span class="digraph">sh</span>
+  </div>
+</section>
+<section class="slide-content">
+  <div class="letters-container">
+    <span class="digraph">gh</span>
+    <span class="digraph">o</span>
+    <span class="digraph">st</span>
+  </div>
+</section>
+<section class="slide-content">
+  <div class="letters-container">
+    <span class="digraph">wh</span>
+    <span class="digraph">a</span>
+    <span class="digraph">t</span>
+  </div>
+</section>
+<section class="slide-content">
+  <div class="letters-container">
+    <span class="digraph">ph</span>
+    <span class="digraph">o</span>
+    <span class="digraph">t</span>
+    <span class="digraph">o</span>
+  </div>
+</section>
+<section class="slide-content">
+  <div class="letters-container">
+    <span class="digraph">b</span>
+    <span class="digraph">a</span>
+    <span class="digraph">ck</span>
+  </div>
+</section>
+<section class="slide-content">
+  <div class="letters-container">
+    <span class="digraph">wr</span>
+    <span class="digraph">o</span>
+    <span class="digraph">t</span>
+    <span class="digraph">e</span>
+  </div>
+</section>
+<section class="slide-content">
+  <div class="letters-container">
+    <span class="digraph">kn</span>
+    <span class="digraph">a</span>
+    <span class="digraph">p</span>
+  </div>
+</section>
+<section class="slide-content">
+  <div class="letters-container">
+    <span class="digraph">gn</span>
+    <span class="digraph">o</span>
+    <span class="digraph">m</span>
+    <span class="digraph">e</span>
+  </div>
+</section>
+<section class="slide-content">
+  <div class="letters-container">
+    <span class="digraph">Gh</span>
+    <span class="digraph">a</span>
+    <span class="digraph">n</span>
+    <span class="digraph">a</span>
+  </div>
+</section>
