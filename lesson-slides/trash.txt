@@ -1,204 +1,194 @@
 
-<section class="slide-content">
-  <div class="letters-container">
-    <span class="digraph">sh</span>
-    <span class="digraph">i</span>
-    <span class="digraph">p</span>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="../dist/reveal.css">
+  <style>
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #333333;
+      --accent: #2196F3;
+    }
+    body[data-theme="dark"] {
+      --bg-color: #1a1a1a;
+      --text-color: #ffffff;
+      --accent: #80FF00;
+    }
+    html, body, .reveal, .slides, section {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    .slide-content {
+      height: 100vh;
+      display: flex !important;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+    }
+    .next-btn {
+      position: absolute;
+      bottom: 30px;
+      padding: 12px 24px;
+      background: var(--accent);
+      color: var(--bg-color);
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: transform 0.3s ease;
+    }
+    .next-btn:hover {
+      transform: scale(1.05);
+    }
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      padding: 10px 20px;
+      background: var(--accent);
+      color: var(--bg-color);
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    @media (max-width: 768px) {
+      .slide-content {
+        padding: 1rem;
+        font-size: 0.9em;
+      }
+      .next-btn {
+        bottom: 15px;
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body data-theme="light">
+  <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+  <div class="reveal">
+    <div class="slides">
+      <!-- Slide 1 -->
+      <section>
+        <div class="slide-content">
+          <h1>What are Syllables?</h1>
+          <p>A syllable is a unit of sound in a word that contains a vowel sound.</p>
+          <button class="next-btn" onclick="Reveal.next()">Next →</button>
+        </div>
+      </section>
+      <!-- Slide 2 -->
+      <section>
+        <div class="slide-content">
+          <h2>Types of Syllables</h2>
+          <p>There are different types of syllables in English, including:</p>
+          <ul>
+            <li>Open Syllables</li>
+            <li>Closed Syllables</li>
+            <li>Vowel-Consonant-e Syllables</li>
+          </ul>
+          <button class="next-btn" onclick="Reveal.next()">Next →</button>
+        </div>
+      </section>
+      <!-- Slide 3 -->
+      <section>
+        <div class="slide-content">
+          <h2>Open Syllables</h2>
+          <p>An open syllable ends with a vowel sound.</p>
+          <p>Examples: me, go, no</p>
+          <button class="next-btn" onclick="Reveal.next()">Next →</button>
+        </div>
+      </section>
+      <!-- Slide 4 -->
+      <section>
+        <div class="slide-content">
+          <h2>Closed Syllables</h2>
+          <p>A closed syllable ends with a consonant sound.</p>
+          <p>Examples: cat, dog, sit</p>
+          <button class="next-btn" onclick="Reveal.next()">Next →</button>
+        </div>
+      </section>
+      <!-- Slide 5 -->
+      <section>
+        <div class="slide-content">
+          <h2>Vowel-Consonant-e Syllables</h2>
+          <p>A vowel-consonant-e syllable ends with a vowel sound followed by a consonant and then the letter "e".</p>
+          <p>Examples: cake, make, take</p>
+          <button class="next-btn" onclick="Reveal.next()">Next →</button>
+        </div>
+      </section>
+     
+<!-- Slide 6 -->
+<section>
+  <div class="slide-content">
+    <h1>Let's Practice!</h1>
+    <p>Can you identify the type of syllable in the word "running"?</p>
+    <ul>
+      <li>Open Syllable</li>
+      <li>Closed Syllable</li>
+      <li>Vowel-Consonant-e Syllable</li>
+    </ul>
+    <button class="next-btn" onclick="Reveal.next()">Next →</button>
   </div>
 </section>
-<section class="slide-content">
-  <div class="letters-container">
-    <span class="digraph">ch</span>
-    <span class="digraph">a</span>
-    <span class="digraph">t</span>
+<!-- Slide 7 -->
+<section>
+  <div class="slide-content">
+    <h2>Answer: Closed Syllable</h2>
+    <p>The word "running" ends with a consonant sound, so it's a closed syllable.</p>
+    <button class="next-btn" onclick="Reveal.next()">Next →</button>
   </div>
 </section>
-<section class="slide-content">
-  <div class="letters-container">
-    <span class="digraph">m</span>
-    <span class="digraph">a</span>
-    <span class="digraph">t</span>
-    <span class="digraph">ch</span>
+<!-- Slide 8 -->
+<section>
+  <div class="slide-content">
+    <h1>More Examples</h1>
+    <p>Let's look at some more examples of different types of syllables.</p>
+    <ul>
+      <li>Open Syllable: happy</li>
+      <li>Closed Syllable: rabbit</li>
+      <li>Vowel-Consonant-e Syllable: ripe</li>
+    </ul>
+    <button class="next-btn" onclick="Reveal.next()">Next →</button>
   </div>
 </section>
-<section class="slide-content">
-  <div class="letters-container">
-    <span class="digraph">th</span>
-    <span class="digraph">i</span>
-    <span class="digraph">n</span>
+<!-- Slide 9 -->
+<section>
+  <div class="slide-content">
+    <h1>Conclusion</h1>
+    <p>In conclusion, understanding syllables can help you read and spell words more accurately.</p>
+    <p>Remember, practice makes perfect!</p>
+    <button class="next-btn" onclick="Reveal.slide(0)">Restart →</button>
   </div>
 </section>
-<section class="slide-content">
-  <div class="letters-container">
-    <span class="digraph">s</span>
-    <span class="digraph">o</span>
-    <span class="digraph">ng</span>
-  </div>
-</section>
-<section class="slide-content">
-  <div class="letters-container">
-    <span class="digraph">p</span>
-    <span class="digraph">i</span>
-    <span class="digraph">n</span>
-    <span class="digraph">k</span>
-  </div>
-</section>
-<section class="slide-content">
-  <div class="letters-container">
-    <span class="digraph">sh</span>
-    <span class="digraph">o</span>
-    <span class="digraph">t</span>
-  </div>
-</section>
-<section class="slide-content">
-  <div class="letters-container">
-    <span class="digraph">ch</span>
-    <span class="digraph">o</span>
-    <span class="digraph">p</span>
-  </div>
-</section>
-<section class="slide-content">
-  <div class="letters-container">
-    <span class="digraph">f</span>
-    <span class="digraph">e</span>
-    <span class="digraph">t</span>
-    <span class="digraph">ch</span>
-  </div>
-</section>
-<section class="slide-content">
-  <div class="letters-container">
-    <span class="digraph">th</span>
-    <span class="digraph">e</span>
-  </div>
-</section>
-<section class="slide-content">
-  <div class="letters-container">
-    <span class="digraph">th</span>
-    <span class="digraph">a</span>
-    <span class="digraph">n</span>
-    <span class="digraph">k</span>
-  </div>
-</section>
-<section class="slide-content">
-  <div class="letters-container">
-    <span class="digraph">l</span>
-    <span class="digraph">o</span>
-    <span class="digraph">n</span>
-    <span class="digraph">g</span>
-  </div>
-</section>
-<section class="slide-content">
-  <div class="letters-container">
-    <span class="digraph">l</span>
-    <span class="digraph">i</span>
-    <span class="digraph">n</span>
-    <span class="digraph">k</span>
-  </div>
-</section>
-<section class="slide-content">
-  <div class="letters-container">
-    <span class="digraph">wh</span>
-    <span class="digraph">i</span>
-    <span class="digraph">ch</span>
-  </div>
-</section>
-<section class="slide-content">
-  <div class="letters-container">
-    <span class="digraph">ph</span>
-    <span class="digraph">o</span>
-    <span class="digraph">n</span>
-    <span class="digraph">e</span>
-  </div>
-</section>
-<section class="slide-content">
-  <div class="letters-container">
-    <span class="digraph">tr</span>
-    <span class="digraph">a</span>
-    <span class="digraph">ck</span>
-  </div>
-</section>
+</div>
+</div>
+<script src="../dist/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    controls: false,
+    progress: false,
+    center: true,
+    hash: true,
+    transition: 'slide',
+    width: '100%',
+    height: '100%',
+    margin: 0.1,
+    minScale: 0.2,
+    maxScale: 1.5,
+    disableLayout: true,
+    embedded: false,
+    touch: true
+  });
 
-<section class="slide-content">
-  <div class="letters-container">
-    <span class="digraph">w</span>
-    <span class="digraph">r</span>
-    <span class="digraph">i</span>
-    <span class="digraph">t</span>
-    <span class="digraph">e</span>
-  </div>
-</section>
-<section class="slide-content">
-  <div class="letters-container">
-    <span class="digraph">k</span>
-    <span class="digraph">n</span>
-    <span class="digraph">o</span>
-    <span class="digraph">w</span>
-  </div>
-</section>
-<section class="slide-content">
-  <div class="letters-container">
-    <span class="digraph">gn</span>
-    <span class="digraph">a</span>
-    <span class="digraph">sh</span>
-  </div>
-</section>
-<section class="slide-content">
-  <div class="letters-container">
-    <span class="digraph">gh</span>
-    <span class="digraph">o</span>
-    <span class="digraph">st</span>
-  </div>
-</section>
-<section class="slide-content">
-  <div class="letters-container">
-    <span class="digraph">wh</span>
-    <span class="digraph">a</span>
-    <span class="digraph">t</span>
-  </div>
-</section>
-<section class="slide-content">
-  <div class="letters-container">
-    <span class="digraph">ph</span>
-    <span class="digraph">o</span>
-    <span class="digraph">t</span>
-    <span class="digraph">o</span>
-  </div>
-</section>
-<section class="slide-content">
-  <div class="letters-container">
-    <span class="digraph">b</span>
-    <span class="digraph">a</span>
-    <span class="digraph">ck</span>
-  </div>
-</section>
-<section class="slide-content">
-  <div class="letters-container">
-    <span class="digraph">wr</span>
-    <span class="digraph">o</span>
-    <span class="digraph">t</span>
-    <span class="digraph">e</span>
-  </div>
-</section>
-<section class="slide-content">
-  <div class="letters-container">
-    <span class="digraph">kn</span>
-    <span class="digraph">a</span>
-    <span class="digraph">p</span>
-  </div>
-</section>
-<section class="slide-content">
-  <div class="letters-container">
-    <span class="digraph">gn</span>
-    <span class="digraph">o</span>
-    <span class="digraph">m</span>
-    <span class="digraph">e</span>
-  </div>
-</section>
-<section class="slide-content">
-  <div class="letters-container">
-    <span class="digraph">Gh</span>
-    <span class="digraph">a</span>
-    <span class="digraph">n</span>
-    <span class="digraph">a</span>
-  </div>
-</section>
+  function toggleTheme() {
+    const currentTheme = document.body.getAttribute('data-theme');
+    document.body.setAttribute('data-theme', currentTheme === 'dark' ? 'light' : 'dark');
+  }
+</script>
+</body>
+</html>

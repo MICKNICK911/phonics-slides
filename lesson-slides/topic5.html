@@ -1,152 +1,248 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="../dist/reveal.css">
-    <style>
-        :root {
-            --bg-color: #ffffff;
-            --text-color: #333333;
-            --accent: #2196F3;
-        }
-
-        body[data-theme="dark"] {
-            --bg-color: #1a1a1a;
-            --text-color: #ffffff;
-            --accent: #80FF00;
-        }
-
-        html, body, .reveal, .slides, section {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            /* justify-self: center;
-            justify-content: center; */
-        }
-
-        .slide-content {
-            height: 100vh;
-            display: flex !important;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 2rem;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-        }
-
-        .next-btn {
-            position: absolute;
-            bottom: 30px;
-            padding: 12px 24px;
-            background: var(--accent);
-            color: var(--bg-color);
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 1.1rem;
-            transition: transform 0.3s ease;
-        }
-
-        .next-btn:hover {
-            transform: scale(1.05);
-        }
-
-        .theme-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-            padding: 10px 20px;
-            background: var(--accent);
-            color: var(--bg-color);
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        @media (max-width: 768px) {
-            .slide-content {
-                padding: 1rem;
-                font-size: 0.9em;
-            }
-            .next-btn {
-                bottom: 15px;
-                font-size: 1rem;
-            }
-        }
-    </style>
-</head>
-<body data-theme="light"> <!-- Added initial theme -->
-    <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+  <link rel="stylesheet" href="../dist/reveal.css">
+  <style>
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #333333;
+      --accent: #2196F3;
+    }
+    body[data-theme="dark"] {
+      --bg-color: #1a1a1a;
+      --text-color: #ffffff;
+      --accent: #80FF00;
+    }
+    html, body, .reveal, .slides, section {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    .slide-content {
+      height: 100vh;
+      display: flex !important;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+    }
+    .next-btn {
+      position: absolute;
+      bottom: 30px;
+      padding: 12px 24px;
+      background: var(--accent);
+      color: var(--bg-color);
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: transform 0.3s ease;
+    }
+    .next-btn:hover {
+      transform: scale(1.05);
+    }
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      padding: 10px 20px;
+      background: var(--accent);
+      color: var(--bg-color);
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    @media (max-width: 980px) {
+      .slide-content {
+        padding: 1rem;
+        font-size: 80px;
+      }
+      .next-btn {
+        bottom: 15px;
+        font-size: 1rem;
+      }
+    }
     
-    <div class="reveal">
-        <div class="slides">
-            <!-- Slide 1 -->
-            <section>
-                <div class="slide-content">
-                    <h1>First Slide</h1>
-                    <p>Content goes here</p>
-                    <button class="next-btn" onclick="Reveal.next()">Next →</button>
-                </div>
-            </section>
+  .slide-content {
+    font-family: Arial, sans-serif;
+  }
+  .slide-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  .slide-content h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  .slide-content p {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .slide-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .slide-content li {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  @media (max-width: 768px) {
+    .slide-content h1 {
+      font-size: 2rem;
+    }
+    .slide-content h2 {
+      font-size: 1.5rem;
+    }
+    .slide-content p {
+      font-size: 1.2rem;
+    }
+    .slide-content li {
+      font-size: 1.2rem;
+    }
+  }
+  @media (max-width: 480px) {
+    .slide-content h1 {
+      font-size: 1.8rem;
+    }
+    .slide-content h2 {
+      font-size: 1.2rem;
+    }
+    .slide-content p {
+      font-size: 1rem;
+    }
+    .slide-content li {
+      font-size: 1rem;
+    }
+  }
+</style>
 
-            <!-- Slide 2 -->
-            <section>
-                <div class="slide-content">
-                    <h2>Second Slide</h2>
-                    <p>More content here</p>
-                    <button class="next-btn" onclick="Reveal.next()">Next →</button>
-                </div>
-            </section>
-
-            <!-- Slide 3 -->
-            <section>
-                <div class="slide-content">
-                    <h1>Final Slide</h1>
-                    <p>Last content section</p>
-                    <p>Last content section</p>
-                    <p>Last content section</p>
-                    <p>Last content section</p>
-                    <p>Last content section</p>
-                    <p>Last content section</p>
-                    <p>Last content section</p>
-                    <p>Last content section</p>
-                    <p>Last content section</p>
-                    <p>Last content section</p>
-                    <p>Last content section</p>
-                    <p>Last content section</p>
-                    <p>Last content section</p>
-                    <p>Last content section</p>
-                    <button class="next-btn" onclick="Reveal.slide(0)">Restart →</button>
-                </div>
-            </section>
+</head>
+<body data-theme="light">
+  <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+  <div class="reveal">
+    <div class="slides">
+      <!-- Slide 1 -->
+      <section>
+        <div class="slide-content">
+          <h1>What are Syllables?</h1>
+          <p>A syllable is a unit of sound in a word that contains a vowel sound.</p>
+          <button class="next-btn" onclick="Reveal.next()">Next →</button>
         </div>
-    </div>
+      </section>
+      <!-- Slide 2 -->
+      <section>
+        <div class="slide-content">
+          <h2>Types of Syllables</h2>
+          <p>There are different types of syllables in English, including:</p>
+          <ul>
+            <li>Open Syllables</li>
+            <li>Closed Syllables</li>
+            <li>Vowel-Consonant-e Syllables</li>
+          </ul>
+          <button class="next-btn" onclick="Reveal.next()">Next →</button>
+        </div>
+      </section>
+      <!-- Slide 3 -->
+      <section>
+        <div class="slide-content">
+          <h2>Open Syllables</h2>
+          <p>An open syllable ends with a vowel sound.</p>
+          <p>Examples: me, go, no</p>
+          <button class="next-btn" onclick="Reveal.next()">Next →</button>
+        </div>
+      </section>
+      <!-- Slide 4 -->
+      <section>
+        <div class="slide-content">
+          <h2>Closed Syllables</h2>
+          <p>A closed syllable ends with a consonant sound.</p>
+          <p>Examples: cat, dog, sit</p>
+          <button class="next-btn" onclick="Reveal.next()">Next →</button>
+        </div>
+      </section>
+      <!-- Slide 5 -->
+      <section>
+        <div class="slide-content">
+          <h2>Vowel-Consonant-e Syllables</h2>
+          <p>A vowel-consonant-e syllable ends with a vowel sound followed by a consonant and then the letter "e".</p>
+          <p>Examples: cake, make, take</p>
+          <button class="next-btn" onclick="Reveal.next()">Next →</button>
+        </div>
+      </section>
+     
+<!-- Slide 6 -->
+<section>
+  <div class="slide-content">
+    <h1>Let's Practice!</h1>
+    <p>Can you identify the type of syllable in the word "running"?</p>
+    <ul>
+      <li>Open Syllable</li>
+      <li>Closed Syllable</li>
+      <li>Vowel-Consonant-e Syllable</li>
+    </ul>
+    <button class="next-btn" onclick="Reveal.next()">Next →</button>
+  </div>
+</section>
+<!-- Slide 7 -->
+<section>
+  <div class="slide-content">
+    <h2>Answer: Closed Syllable</h2>
+    <p>The word "running" ends with a consonant sound, so it's a closed syllable.</p>
+    <button class="next-btn" onclick="Reveal.next()">Next →</button>
+  </div>
+</section>
+<!-- Slide 8 -->
+<section>
+  <div class="slide-content">
+    <h1>More Examples</h1>
+    <p>Let's look at some more examples of different types of syllables.</p>
+    <ul>
+      <li>Open Syllable: happy</li>
+      <li>Closed Syllable: rabbit</li>
+      <li>Vowel-Consonant-e Syllable: ripe</li>
+    </ul>
+    <button class="next-btn" onclick="Reveal.next()">Next →</button>
+  </div>
+</section>
+<!-- Slide 9 -->
+<section>
+  <div class="slide-content">
+    <h1>Conclusion</h1>
+    <p>In conclusion, understanding syllables can help you read and spell words more accurately.</p>
+    <p>Remember, practice makes perfect!</p>
+    <button class="next-btn" onclick="Reveal.slide(0)">Restart →</button>
+  </div>
+</section>
+</div>
+</div>
+<script src="../dist/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    controls: false,
+    progress: false,
+    center: true,
+    hash: true,
+    transition: 'slide',
+    width: '100%',
+    height: '100%',
+    margin: 0.1,
+    minScale: 0.2,
+    maxScale: 1.5,
+    disableLayout: true,
+    embedded: false,
+    touch: true
+  });
 
-    <script src="../dist/reveal.js"></script>
-    <script>
-        Reveal.initialize({
-            controls: false,
-            progress: false,
-            center: true,
-            hash: true,
-            transition: 'slide',
-            width: '100%',
-            height: '100%',
-            margin: 0.1,
-            minScale: 0.2,
-            maxScale: 1.5,
-            disableLayout: true,
-            embedded: false,
-            touch: true
-        });
-
-        function toggleTheme() {
-            const currentTheme = document.body.getAttribute('data-theme');
-            document.body.setAttribute('data-theme', 
-                currentTheme === 'dark' ? 'light' : 'dark');
-        }
-    </script>
+  function toggleTheme() {
+    const currentTheme = document.body.getAttribute('data-theme');
+    document.body.setAttribute('data-theme', currentTheme === 'dark' ? 'light' : 'dark');
+  }
+</script>
 </body>
 </html>
