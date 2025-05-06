@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Vertical Slider with Dark Mode</title>
+    <title>Screen-specific Theme Toggles</title>
     <style>
         :root {
             --bg-color: #ffffff;
@@ -33,15 +33,15 @@
 
         body {
             overflow: hidden;
-            touch-action: pan-y;
-            --vh: 1vh;
+            touch-action: pan-x;
             background-color: var(--bg-color);
             color: var(--text-color);
         }
 
         .container {
-            width: 100vw;
-            height: 300vh;
+            display: flex;
+            width: 300vw;
+            height: 100vh;
             transition: transform 0.5s ease-in-out;
         }
 
@@ -53,6 +53,23 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
+            position: relative;
+        }
+
+        .screen-theme-toggle {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            background-color: var(--btn-bg);
+            color: var(--btn-color);
+            border: 2px solid var(--text-color);
+            z-index: 2147483647;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            transform: translateZ(0);
+            will-change: transform;
         }
 
         #screen1 { background-color: var(--screen1-bg); }
@@ -70,21 +87,6 @@
             font-size: 18px;
             min-width: 140px;
             touch-action: manipulation;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        #themeToggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 2147483647;
-            padding: 12px 24px;
-            border-radius: 8px;
-            cursor: pointer;
-            background-color: var(--btn-bg);
-            color: var(--btn-color);
-            border: none;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
         @media (min-width: 768px) {
@@ -92,22 +94,29 @@
                 padding: 18px 36px;
                 font-size: 20px;
             }
+            .screen-theme-toggle {
+                padding: 12px 24px;
+                font-size: 16px;
+            }
         }
     </style>
 </head>
 <body>
-    <button id="themeToggle" onclick="toggleTheme()">🌓 Toggle Theme</button>
-    
     <div class="container" id="slider">
         <div class="screen" id="screen1">
+            <button class="screen-theme-toggle" onclick="toggleTheme()">🌓 Theme</button>
             <h1>Screen 1</h1>
-            <button class="nav-btn" onclick="navigate(1)">Next ↓</button>
+            <button class="nav-btn" onclick="navigate(1)">Next →</button>
         </div>
+        
         <div class="screen" id="screen2">
+            <button class="screen-theme-toggle" onclick="toggleTheme()">🌓 Theme</button>
             <h1>Screen 2</h1>
-            <button class="nav-btn" onclick="navigate(2)">Continue ↓</button>
+            <button class="nav-btn" onclick="navigate(2)">Continue →</button>
         </div>
+        
         <div class="screen" id="screen3">
+            <button class="screen-theme-toggle" onclick="toggleTheme()">🌓 Theme</button>
             <h1>Screen 3</h1>
             <button class="nav-btn" onclick="instantRestart()">↺ Restart</button>
         </div>
@@ -116,75 +125,72 @@
     <script>
         let currentPosition = 0;
         const slider = document.getElementById('slider');
-        const themeToggle = document.getElementById('themeToggle');
 
         // Theme management
         function toggleTheme() {
             document.body.classList.toggle('dark-mode');
             localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+            updateToggleButtons();
         }
 
-        // Check saved theme
+        function updateToggleButtons() {
+            const toggles = document.querySelectorAll('.screen-theme-toggle');
+            const isDark = document.body.classList.contains('dark-mode');
+            toggles.forEach(toggle => {
+                toggle.textContent = isDark ? '🌞 Theme' : '🌓 Theme';
+                toggle.style.backgroundColor = getComputedStyle(document.documentElement)
+                    .getPropertyValue('--btn-bg').trim();
+                toggle.style.color = getComputedStyle(document.documentElement)
+                    .getPropertyValue('--btn-color').trim();
+            });
+        }
+
+        // Initialize theme
         if (localStorage.getItem('theme') === 'dark') {
             document.body.classList.add('dark-mode');
         }
-
-        // Set dynamic viewport height
-        const setVH = () => {
-            const vh = window.innerHeight * 0.01;
-            document.documentElement.style.setProperty('--vh', `${vh}px`);
-        };
-        
-        setVH();
-        window.addEventListener('resize', setVH);
-        window.addEventListener('orientationchange', setVH);
+        updateToggleButtons();
 
         function navigate(position) {
             currentPosition = position;
-            updateSliderPosition();
+            slider.style.transform = `translateX(-${position * 100}vw)`;
         }
 
         function instantRestart() {
             slider.style.transition = 'none';
             currentPosition = 0;
-            updateSliderPosition();
+            slider.style.transform = 'translateX(0)';
             void slider.offsetHeight;
             slider.style.transition = '';
         }
 
-        function updateSliderPosition() {
-            slider.style.transform = `translateY(-${currentPosition * 100}vh)`;
-        }
-
-        // Touch/swipe handling
-        let startY = 0;
+        // Touch handling
+        let startX = 0;
         const swipeThreshold = 50;
 
-        document.addEventListener('touchstart', e => {
-            startY = e.touches[0].clientY;
-        });
-
+        document.addEventListener('touchstart', e => startX = e.touches[0].clientX);
         document.addEventListener('touchend', handleSwipe);
-        document.addEventListener('mousedown', e => {
-            startY = e.clientY;
-        });
+        document.addEventListener('mousedown', e => startX = e.clientX);
         document.addEventListener('mouseup', handleSwipe);
 
         function handleSwipe(e) {
-            const endY = e.changedTouches?.[0].clientY || e.clientY;
-            const deltaY = endY - startY;
-
-            if (Math.abs(deltaY) > swipeThreshold) {
-                if (deltaY > 0) {
-                    navigate(Math.max(0, currentPosition - 1));
-                } else {
-                    navigate(Math.min(2, currentPosition + 1));
-                }
+            const endX = e.changedTouches?.[0].clientX || e.clientX;
+            const deltaX = endX - startX;
+            if (Math.abs(deltaX) > swipeThreshold) {
+                deltaX > 0 ? navigate(Math.max(0, currentPosition - 1)) : navigate(Math.min(2, currentPosition + 1));
             }
         }
 
-        // Mobile address bar handling
-        window.addEventListener('load', () => setTimeout(() => window.scrollTo(0, 1), 0));
+        // Mobile optimizations
+        window.addEventListener('load', () => {
+            setTimeout(() => window.scrollTo(0, 1), 0);
+        });
+        
+        document.body.addEventListener('touchmove', (e) => {
+            if (!e.target.closest('.nav-btn') && !e.target.closest('.screen-theme-toggle')) {
+                e.preventDefault();
+            }
+        }, { passive: false });
     </script>
 </body>
 </html>
