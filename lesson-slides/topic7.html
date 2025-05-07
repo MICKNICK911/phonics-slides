@@ -1,152 +1,285 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="../dist/reveal.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>English Syllable Types</title>
     <style>
         :root {
             --bg-color: #ffffff;
             --text-color: #333333;
-            --accent: #2196F3;
+            --btn-bg: #333333;
+            --btn-color: #ffffff;
+            --screen1-bg: #ffcccc;
+            --screen2-bg: #ccffcc;
+            --screen3-bg: #cccfff;
+            --screen4-bg: #ffebcc;
+            --screen5-bg: #ebccff;
+            --screen6-bg: #ccf8ff;
+            --screen7-bg: #f8ffcc;
+            --example-bg: rgba(0,0,0,0.1);
         }
 
-        body[data-theme="dark"] {
+        .dark-mode {
             --bg-color: #1a1a1a;
             --text-color: #ffffff;
-            --accent: #80FF00;
+            --btn-bg: #4a4a4a;
+            --screen1-bg: #4d0000;
+            --screen2-bg: #004d00;
+            --screen3-bg: #00004d;
+            --screen4-bg: #4d3300;
+            --screen5-bg: #33004d;
+            --screen6-bg: #004d4d;
+            --screen7-bg: #4d4d00;
+            --example-bg: rgba(255,255,255,0.1);
         }
 
-        html, body, .reveal, .slides, section {
-            height: 100%;
+        * {
             margin: 0;
             padding: 0;
-            /* justify-self: center;
-            justify-content: center; */
+            box-sizing: border-box;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        .slide-content {
-            height: 100vh;
-            display: flex !important;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 2rem;
+        body {
+            overflow: hidden;
+            touch-action: pan-y;
             background-color: var(--bg-color);
             color: var(--text-color);
         }
 
-        .next-btn {
-            position: absolute;
-            bottom: 30px;
-            padding: 12px 24px;
-            background: var(--accent);
-            color: var(--bg-color);
-            border: none;
-            border-radius: 25px;
+        .container {
+            width: 100vw;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .screen {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        #screen1 { background-color: var(--screen1-bg); }
+        #screen2 { background-color: var(--screen2-bg); }
+        #screen3 { background-color: var(--screen3-bg); }
+        #screen4 { background-color: var(--screen4-bg); }
+        #screen5 { background-color: var(--screen5-bg); }
+        #screen6 { background-color: var(--screen6-bg); }
+        #screen7 { background-color: var(--screen7-bg); }
+
+        .nav-btn {
+            padding: 16px 32px;
+            margin: 10px;
             cursor: pointer;
-            font-size: 1.1rem;
-            transition: transform 0.3s ease;
+            background-color: var(--btn-bg);
+            color: var(--btn-color);
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            min-width: 140px;
+            touch-action: manipulation;
         }
 
-        .next-btn:hover {
-            transform: scale(1.05);
-        }
-
-        .theme-toggle {
+        #themeToggle {
             position: fixed;
             top: 20px;
             right: 20px;
             z-index: 1000;
-            padding: 10px 20px;
-            background: var(--accent);
-            color: var(--bg-color);
-            border: none;
-            border-radius: 5px;
+            padding: 12px 24px;
+            border-radius: 8px;
             cursor: pointer;
+            background-color: var(--btn-bg);
+            color: var(--btn-color);
+            border: none;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
-        @media (max-width: 768px) {
-            .slide-content {
-                padding: 1rem;
-                font-size: 0.9em;
-            }
-            .next-btn {
-                bottom: 15px;
-                font-size: 1rem;
-            }
+        .content {
+            max-width: 600px;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .example {
+            background-color: var(--example-bg);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-size: 1.1em;
         }
     </style>
 </head>
-<body data-theme="light"> <!-- Added initial theme -->
-    <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+<body>
+    <button id="themeToggle" onclick="toggleTheme()">🌓 Toggle Theme</button>
     
-    <div class="reveal">
-        <div class="slides">
-            <!-- Slide 1 -->
-            <section>
-                <div class="slide-content">
-                    <h1>First Slide</h1>
-                    <p>Content goes here</p>
-                    <button class="next-btn" onclick="Reveal.next()">Next →</button>
+    <div class="container" id="slider">
+        <!-- Closed Syllable -->
+        <div class="screen" id="screen1">
+            <div class="content">
+                <h1>🔒 Closed Syllable</h1>
+                <p>A syllable ending with a consonant, making the vowel short.</p>
+                <div class="example">
+                    <p>📖 Examples: <em>cat, sit, mag-net</em></p>
+                    <p>👂 Sound: Short vowels like /ă/ in "cat"</p>
                 </div>
-            </section>
+                <button class="nav-btn" onclick="navigate(1)">Next ↓</button>
+            </div>
+        </div>
 
-            <!-- Slide 2 -->
-            <section>
-                <div class="slide-content">
-                    <h2>Second Slide</h2>
-                    <p>More content here</p>
-                    <button class="next-btn" onclick="Reveal.next()">Next →</button>
+        <!-- Open Syllable -->
+        <div class="screen" id="screen2">
+            <div class="content">
+                <h1>🔓 Open Syllable</h1>
+                <p>Ends with a vowel that says its long sound.</p>
+                <div class="example">
+                    <p>📖 Examples: <em>go, she, mu-sic</em></p>
+                    <p>👂 Sound: Long vowels like /ō/ in "go"</p>
                 </div>
-            </section>
+                <button class="nav-btn" onclick="navigate(2)">Continue ↓</button>
+            </div>
+        </div>
 
-            <!-- Slide 3 -->
-            <section>
-                <div class="slide-content">
-                    <h1>Final Slide</h1>
-                    <p>Last content section</p>
-                    <p>Last content section</p>
-                    <p>Last content section</p>
-                    <p>Last content section</p>
-                    <p>Last content section</p>
-                    <p>Last content section</p>
-                    <p>Last content section</p>
-                    <p>Last content section</p>
-                    <p>Last content section</p>
-                    <p>Last content section</p>
-                    <p>Last content section</p>
-                    <p>Last content section</p>
-                    <p>Last content section</p>
-                    <p>Last content section</p>
-                    <button class="next-btn" onclick="Reveal.slide(0)">Restart →</button>
+        <!-- Magic E -->
+        <div class="screen" id="screen3">
+            <div class="content">
+                <h1>✨ Magic E</h1>
+                <p>Silent 'e' makes the previous vowel long.</p>
+                <div class="example">
+                    <p>📖 Examples: <em>cake, note, theme</em></p>
+                    <p>👂 Sound: Vowel + silent e like /ā/ in "cake"</p>
                 </div>
-            </section>
+                <button class="nav-btn" onclick="navigate(3)">Next ↓</button>
+            </div>
+        </div>
+
+        <!-- R-Controlled -->
+        <div class="screen" id="screen4">
+            <div class="content">
+                <h1>🦁 R-Controlled</h1>
+                <p>Vowel + 'r' changes the vowel sound.</p>
+                <div class="example">
+                    <p>📖 Examples: <em>car, bird, fern</em></p>
+                    <p>👂 Sound: /ar/ in "car", /er/ in "her"</p>
+                </div>
+                <button class="nav-btn" onclick="navigate(4)">Continue ↓</button>
+            </div>
+        </div>
+
+        <!-- Vowel Team -->
+        <div class="screen" id="screen5">
+            <div class="content">
+                <h1>👥 Vowel Team</h1>
+                <p>Two vowels working together.</p>
+                <div class="example">
+                    <p>📖 Examples: <em>boat, team, cloud</em></p>
+                    <p>👂 Sound: /ō/ in "boat", /ow/ in "cloud"</p>
+                </div>
+                <button class="nav-btn" onclick="navigate(5)">Next ↓</button>
+            </div>
+        </div>
+
+        <!-- Consonant-le -->
+        <div class="screen" id="screen6">
+            <div class="content">
+                <h1>🔠 Consonant-le</h1>
+                <p>Appears at the end of words.</p>
+                <div class="example">
+                    <p>📖 Examples: <em>ta-ble, bub-ble, lit-tle</em></p>
+                    <p>👂 Sound: /əl/ in "table"</p>
+                </div>
+                <button class="nav-btn" onclick="navigate(6)">Continue ↓</button>
+            </div>
+        </div>
+
+        <!-- Schwa -->
+        <div class="screen" id="screen7">
+            <div class="content">
+                <h1>🎭 Schwa</h1>
+                <p>Unstressed "uh" sound in multisyllabic words.</p>
+                <div class="example">
+                    <p>📖 Examples: <em>so-fa, pen-cil, ba-nana</em></p>
+                    <p>👂 Sound: /ə/ like "a" in "sofa"</p>
+                </div>
+                <button class="nav-btn" onclick="instantRestart()">↺ Restart</button>
+            </div>
         </div>
     </div>
 
-    <script src="../dist/reveal.js"></script>
     <script>
-        Reveal.initialize({
-            controls: false,
-            progress: false,
-            center: true,
-            hash: true,
-            transition: 'slide',
-            width: '100%',
-            height: '100%',
-            margin: 0.1,
-            minScale: 0.2,
-            maxScale: 1.5,
-            disableLayout: true,
-            embedded: false,
-            touch: true
+        let currentPosition = 0;
+        const slider = document.getElementById('slider');
+        const slides = document.querySelectorAll('.screen');
+        const totalSlides = slides.length - 1;
+
+        // Initialize slider height
+        function initSlider() {
+            slider.style.height = `${slides.length * 100}vh`;
+        }
+        initSlider();
+
+        // Theme management
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+        }
+
+        // Load saved theme
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+        }
+
+        // Navigation functions
+        function navigate(position) {
+            currentPosition = Math.max(0, Math.min(position, totalSlides));
+            slider.style.transform = `translateY(-${currentPosition * 100}vh)`;
+        }
+
+        function instantRestart() {
+            slider.style.transition = 'none';
+            currentPosition = 0;
+            slider.style.transform = 'translateY(0)';
+            void slider.offsetHeight; // Trigger reflow
+            slider.style.transition = '';
+        }
+
+        // Touch/swipe handling
+        let startY = 0;
+        const swipeThreshold = 50;
+
+        document.addEventListener('touchstart', e => {
+            startY = e.touches[0].clientY;
         });
 
-        function toggleTheme() {
-            const currentTheme = document.body.getAttribute('data-theme');
-            document.body.setAttribute('data-theme', 
-                currentTheme === 'dark' ? 'light' : 'dark');
+        document.addEventListener('touchend', handleSwipe);
+        document.addEventListener('mousedown', e => {
+            startY = e.clientY;
+        });
+        document.addEventListener('mouseup', handleSwipe);
+
+        function handleSwipe(e) {
+            const endY = e.changedTouches?.[0].clientY || e.clientY;
+            const deltaY = startY - endY;
+
+            if (Math.abs(deltaY) > swipeThreshold) {
+                if (deltaY > 0) { // Swipe up
+                    navigate(currentPosition + 1);
+                } else { // Swipe down
+                    navigate(currentPosition - 1);
+                }
+            }
         }
+
+        // Mobile viewport fixes
+        window.addEventListener('resize', () => {
+            setTimeout(() => window.scrollTo(0, 1), 0);
+        });
+        window.addEventListener('load', () => {
+            setTimeout(() => window.scrollTo(0, 1), 0);
+        });
     </script>
 </body>
 </html>

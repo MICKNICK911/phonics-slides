@@ -1,152 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="../dist/reveal.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Interactive Sentences</title>
     <style>
         :root {
             --bg-color: #ffffff;
             --text-color: #333333;
-            --accent: #2196F3;
+            --btn-bg: #333333;
+            --btn-color: #ffffff;
+            --screen-bg: #f8f9fa;
+            --highlight-bg: #ffd700;
+            --highlight-text: #000000;
         }
 
-        body[data-theme="dark"] {
+        .dark-mode {
             --bg-color: #1a1a1a;
             --text-color: #ffffff;
-            --accent: #80FF00;
+            --btn-bg: #4a4a4a;
+            --screen-bg: #2d2d2d;
+            --highlight-bg: #4a90e2;
+            --highlight-text: #ffffff;
         }
 
-        html, body, .reveal, .slides, section {
-            height: 100%;
+        * {
             margin: 0;
             padding: 0;
-            /* justify-self: center;
-            justify-content: center; */
+            box-sizing: border-box;
+            transition: all 0.3s ease;
         }
 
-        .slide-content {
-            height: 100vh;
-            display: flex !important;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 2rem;
+        body {
+            overflow: hidden;
+            touch-action: pan-y;
             background-color: var(--bg-color);
             color: var(--text-color);
         }
 
-        .next-btn {
-            position: absolute;
-            bottom: 30px;
-            padding: 12px 24px;
-            background: var(--accent);
-            color: var(--bg-color);
-            border: none;
-            border-radius: 25px;
+        .container {
+            width: 100vw;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .screen {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background-color: var(--screen-bg);
+        }
+
+        .sentence {
+            font-size: 24px;
+            max-width: 90%;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        .word {
+            display: inline-block;
+            margin: 2px 4px;
+            padding: 4px 8px;
+            border-radius: 4px;
             cursor: pointer;
-            font-size: 1.1rem;
-            transition: transform 0.3s ease;
+            transition: all 0.2s ease;
         }
 
-        .next-btn:hover {
-            transform: scale(1.05);
+        .word.highlighted {
+            background-color: var(--highlight-bg);
+            color: var(--highlight-text);
         }
 
-        .theme-toggle {
+        .nav-btn {
+            padding: 12px 24px;
+            margin: 20px 10px 0;
+            cursor: pointer;
+            background-color: var(--btn-bg);
+            color: var(--btn-color);
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            touch-action: manipulation;
+        }
+
+        #themeToggle {
             position: fixed;
             top: 20px;
             right: 20px;
             z-index: 1000;
             padding: 10px 20px;
-            background: var(--accent);
-            color: var(--bg-color);
-            border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
-        }
-
-        @media (max-width: 768px) {
-            .slide-content {
-                padding: 1rem;
-                font-size: 0.9em;
-            }
-            .next-btn {
-                bottom: 15px;
-                font-size: 1rem;
-            }
+            background-color: var(--btn-bg);
+            color: var(--btn-color);
+            border: none;
         }
     </style>
 </head>
-<body data-theme="light"> <!-- Added initial theme -->
-    <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+<body>
+    <button id="themeToggle" onclick="toggleTheme()">🌓 Toggle Theme</button>
     
-    <div class="reveal">
-        <div class="slides">
-            <!-- Slide 1 -->
-            <section>
-                <div class="slide-content">
-                    <h1>First Slide</h1>
-                    <p>Content goes here</p>
-                    <button class="next-btn" onclick="Reveal.next()">Next →</button>
-                </div>
-            </section>
+    <div class="container" id="slider">
+        <!-- Slide 1 -->
+        <div class="screen">
+            <div class="sentence">
+                <span class="word" onclick="toggleHighlight(this)">The</span>
+                <span class="word" onclick="toggleHighlight(this)">quick</span>
+                <span class="word" onclick="toggleHighlight(this)">brown</span>
+                <span class="word" onclick="toggleHighlight(this)">fox</span>
+                <span class="word" onclick="toggleHighlight(this)">jumps</span>
+                <span class="word" onclick="toggleHighlight(this)">over</span>
+                <span class="word" onclick="toggleHighlight(this)">the</span>
+                <span class="word" onclick="toggleHighlight(this)">lazy</span>
+                <span class="word" onclick="toggleHighlight(this)">dog.</span>
+            </div>
+            <button class="nav-btn" onclick="nextSlide()">Next ↓</button>
+        </div>
 
-            <!-- Slide 2 -->
-            <section>
-                <div class="slide-content">
-                    <h2>Second Slide</h2>
-                    <p>More content here</p>
-                    <button class="next-btn" onclick="Reveal.next()">Next →</button>
-                </div>
-            </section>
+        <!-- Slide 2 -->
+        <div class="screen">
+            <div class="sentence">
+                <span class="word" onclick="toggleHighlight(this)">Learning</span>
+                <span class="word" onclick="toggleHighlight(this)">to</span>
+                <span class="word" onclick="toggleHighlight(this)">code</span>
+                <span class="word" onclick="toggleHighlight(this)">requires</span>
+                <span class="word" onclick="toggleHighlight(this)">practice</span>
+                <span class="word" onclick="toggleHighlight(this)">and</span>
+                <span class="word" onclick="toggleHighlight(this)">persistence.</span>
+            </div>
+            <button class="nav-btn" onclick="nextSlide()">Next ↓</button>
+        </div>
 
-            <!-- Slide 3 -->
-            <section>
-                <div class="slide-content">
-                    <h1>Final Slide</h1>
-                    <p>Last content section</p>
-                    <p>Last content section</p>
-                    <p>Last content section</p>
-                    <p>Last content section</p>
-                    <p>Last content section</p>
-                    <p>Last content section</p>
-                    <p>Last content section</p>
-                    <p>Last content section</p>
-                    <p>Last content section</p>
-                    <p>Last content section</p>
-                    <p>Last content section</p>
-                    <p>Last content section</p>
-                    <p>Last content section</p>
-                    <p>Last content section</p>
-                    <button class="next-btn" onclick="Reveal.slide(0)">Restart →</button>
-                </div>
-            </section>
+        <!-- Add 58 more slides following the same pattern -->
+
+        <!-- Final Slide -->
+        <div class="screen">
+            <div class="sentence">
+                <span class="word" onclick="toggleHighlight(this)">Congratulations!</span>
+                <span class="word" onclick="toggleHighlight(this)">You've</span>
+                <span class="word" onclick="toggleHighlight(this)">completed</span>
+                <span class="word" onclick="toggleHighlight(this)">all</span>
+                <span class="word" onclick="toggleHighlight(this)">sentences!</span>
+            </div>
+            <button class="nav-btn" onclick="instantRestart()">↺ Restart</button>
         </div>
     </div>
 
-    <script src="../dist/reveal.js"></script>
     <script>
-        Reveal.initialize({
-            controls: false,
-            progress: false,
-            center: true,
-            hash: true,
-            transition: 'slide',
-            width: '100%',
-            height: '100%',
-            margin: 0.1,
-            minScale: 0.2,
-            maxScale: 1.5,
-            disableLayout: true,
-            embedded: false,
-            touch: true
-        });
+        let currentPosition = 0;
+        const slider = document.getElementById('slider');
+        const slides = document.querySelectorAll('.screen');
+        const totalSlides = slides.length - 1;
+
+        function initSlider() {
+            slider.style.height = `${slides.length * 100}vh`;
+        }
+        initSlider();
 
         function toggleTheme() {
-            const currentTheme = document.body.getAttribute('data-theme');
-            document.body.setAttribute('data-theme', 
-                currentTheme === 'dark' ? 'light' : 'dark');
+            document.body.classList.toggle('dark-mode');
+            localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
         }
+
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+        }
+
+        function navigate(position) {
+            currentPosition = Math.max(0, Math.min(position, totalSlides));
+            slider.style.transform = `translateY(-${currentPosition * 100}vh)`;
+        }
+
+        function nextSlide() {
+            navigate(currentPosition + 1);
+        }
+
+        function prevSlide() {
+            navigate(currentPosition - 1);
+        }
+
+        function instantRestart() {
+            slider.style.transition = 'none';
+            currentPosition = 0;
+            slider.style.transform = 'translateY(0)';
+            void slider.offsetHeight;
+            slider.style.transition = '';
+        }
+
+        function toggleHighlight(word) {
+            word.classList.toggle('highlighted');
+        }
+
+        let startY = 0;
+        const swipeThreshold = 50;
+
+        document.addEventListener('touchstart', e => {
+            startY = e.touches[0].clientY;
+        });
+
+        document.addEventListener('touchend', handleSwipe);
+        document.addEventListener('mousedown', e => {
+            startY = e.clientY;
+        });
+        document.addEventListener('mouseup', handleSwipe);
+
+        function handleSwipe(e) {
+            const endY = e.changedTouches?.[0].clientY || e.clientY;
+            const deltaY = startY - endY;
+
+            if (Math.abs(deltaY) > swipeThreshold) {
+                deltaY > 0 ? nextSlide() : prevSlide();
+            }
+        }
+
+        window.addEventListener('load', () => setTimeout(() => window.scrollTo(0, 1), 0));
+        window.addEventListener('resize', () => setTimeout(() => window.scrollTo(0, 1), 0));
     </script>
 </body>
 </html>

@@ -1,134 +1,225 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <link rel="stylesheet" href="../dist/reveal.css">
-    <link rel="stylesheet" href="../dist/theme/black.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Consonant Blends</title>
     <style>
-        /* Full viewport layout */
-        html, body, .reveal, .slides, section {
-            height: 100% !important;
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --btn-bg: #333333;
+            --btn-color: #ffffff;
+            --screen-bg: #f8f9fa;
+        }
+
+        .dark-mode {
+            --bg-color: #1a1a1a;
+            --text-color: #ffffff;
+            --btn-bg: #4a4a4a;
+            --screen-bg: #2d2d2d;
+        }
+
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
         }
 
-        .y-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            height: 50vh;  /* Use 80% of viewport height */
-            padding: 2rem;
-            background: transparent;
-            justify-self: center;
+        body {
+            overflow: hidden;
+            touch-action: pan-y;
+            background-color: var(--bg-color);
+            color: var(--text-color);
         }
 
-        .y-column {
-            background: rgba(255, 255, 255, 0.1);
+        .container {
+            width: 100vw;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .screen {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             padding: 20px;
-            border-radius: 15px;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background-color: var(--screen-bg);
         }
 
-        .y-title {
-            color: #FFD700;
-            font-size: 30px;
-            margin-bottom: 0px;
-            padding-bottom: 0px;
-            border-bottom: 2px solid #3498db;
+        .blend-card {
+            text-align: center;
+            max-width: 90%;
         }
 
-        .y-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            font-size: 25px;
-            line-height: 1.5;
-            color: #fff;
+        .blend {
+            font-size: 100px;
+            font-weight: bold;
+            margin: 20px 0;
+            color: #2c3e50;
         }
 
-        .heading {
-                color: rgb(94, 255, 0);
-                margin-top: 0px;
-            }
-
-        @media (max-width: 768px) {
-            .y-grid {
-                /* grid-template-columns: 1fr; */
-                height: auto;
-                min-height: 90vh;
-            }
-            .y-column {
-                padding: 1.5rem;
-            }
-
-            .heading {
-                color: rgb(255, 208, 0);
-                margin-top: 10px;
-            }
-        }
-        
-        /* Add this to your media query */
-     @media (max-width: 480px) {
-        .y-title {
-        font-size: 1.2rem;
-         }
-        .y-list {
-        font-size: 1rem;
+        .dark-mode .blend {
+            color: #ecf0f1;
         }
 
-        .heading {
-            color: rgb(255, 208, 0);
-            margin-top: 10px;
+        .example-word {
+            font-size: 40px;
+            margin: 20px 0;
+            color: #3498db;
         }
-      }
+
+        .dark-mode .example-word {
+            color: #1abc9c;
+        }
+
+        .nav-btn {
+            padding: 12px 24px;
+            margin: 10px;
+            cursor: pointer;
+            background-color: var(--btn-bg);
+            color: var(--btn-color);
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            touch-action: manipulation;
+        }
+
+        #themeToggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            background-color: var(--btn-bg);
+            color: var(--btn-color);
+            border: none;
+        }
     </style>
 </head>
 <body>
-    <div class="reveal">
-        <div class="slides">
-            <section data-background="#1a1a1a">
-                <div class="heading" style="font-size:50px; font-weight: bolder;">Y as a Vowel</div>
-                
-                <div class="y-grid">
-                    <!-- Short i Column -->
-                    <div class="y-column">
-                        <div class="y-title">Short i)</div>
-                        <ul class="y-list">
-                            <li>gym</li><li>myth</li><li>lynx</li><li>syrup</li><li>pyramid</li>
-                            <li>mystic</li><li>cynic</li><li>lyric</li><li>cyst</li><li>gymnast</li>
-                        </ul>
-                    </div>
+    <button id="themeToggle" onclick="toggleTheme()">🌓 Toggle Theme</button>
+    
+    <div class="container" id="slider">
+        <!-- BL Blend -->
+        <div class="screen">
+            <div class="blend-card">
+                <div class="blend">BL</div>
+                <div class="example-word">BLack</div>
+                <button class="nav-btn" onclick="nextSlide()">Next ↓</button>
+            </div>
+        </div>
 
-                    <!-- Long i Column -->
-                    <div class="y-column">
-                        <div class="y-title">Long i</div>
-                        <ul class="y-list">
-                            <li>fly</li><li>cry</li><li>my</li><li>sky</li><li>dry</li>
-                            <li>shy</li><li>ply</li><li>spy</li><li>try</li><li>fry</li>
-                        </ul>
-                    </div>
+        <!-- BR Blend -->
+        <div class="screen">
+            <div class="blend-card">
+                <div class="blend">BR</div>
+                <div class="example-word">BRush</div>
+                <button class="nav-btn" onclick="nextSlide()">Next ↓</button>
+            </div>
+        </div>
 
-                    <!-- Long e Column -->
-                    <div class="y-column">
-                        <div class="y-title">Long e</div>
-                        <ul class="y-list">
-                            <li>happy</li><li>sunny</li><li>baby</li><li>city</li><li>party</li>
-                            <li>funny</li><li>lucky</li><li>honey</li><li>silly</li><li>penny</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
+        <!-- CL Blend -->
+        <div class="screen">
+            <div class="blend-card">
+                <div class="blend">CL</div>
+                <div class="example-word">CLock</div>
+                <button class="nav-btn" onclick="nextSlide()">Next ↓</button>
+            </div>
+        </div>
+
+        <!-- Add more blends following same pattern -->
+
+        <!-- Final Slide -->
+        <div class="screen">
+            <div class="blend-card">
+                <div class="blend">🎉</div>
+                <div class="example-word">Great Job!</div>
+                <button class="nav-btn" onclick="instantRestart()">↺ Restart</button>
+            </div>
         </div>
     </div>
 
-    <script src="../dist/reveal.js"></script>
     <script>
-        Reveal.initialize({
-            controls: false,  // Remove default controls
-            center: true,
-            hash: true,
-            transition: 'fade'
+        let currentPosition = 0;
+        const slider = document.getElementById('slider');
+        const slides = document.querySelectorAll('.screen');
+        const totalSlides = slides.length - 1;
+
+        function initSlider() {
+            slider.style.height = `${slides.length * 100}vh`;
+        }
+        initSlider();
+
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+        }
+
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+        }
+
+        function navigate(position) {
+            currentPosition = Math.max(0, Math.min(position, totalSlides));
+            slider.style.transform = `translateY(-${currentPosition * 100}vh)`;
+        }
+
+        function nextSlide() {
+            navigate(currentPosition + 1);
+        }
+
+        function prevSlide() {
+            navigate(currentPosition - 1);
+        }
+
+        function instantRestart() {
+            slider.style.transition = 'none';
+            currentPosition = 0;
+            slider.style.transform = 'translateY(0)';
+            void slider.offsetHeight;
+            slider.style.transition = '';
+        }
+
+        let startY = 0;
+        const swipeThreshold = 50;
+
+        document.addEventListener('touchstart', e => {
+            startY = e.touches[0].clientY;
         });
+
+        document.addEventListener('touchend', handleSwipe);
+        document.addEventListener('mousedown', e => {
+            startY = e.clientY;
+        });
+        document.addEventListener('mouseup', handleSwipe);
+
+        function handleSwipe(e) {
+            const endY = e.changedTouches?.[0].clientY || e.clientY;
+            const deltaY = startY - endY;
+
+            if (Math.abs(deltaY) > swipeThreshold) {
+                deltaY > 0 ? nextSlide() : prevSlide();
+            }
+        }
+
+        window.addEventListener('load', () => setTimeout(() => window.scrollTo(0, 1), 0));
+        window.addEventListener('resize', () => setTimeout(() => window.scrollTo(0, 1), 0));
     </script>
 </body>
 </html>
+
+
+
+<!--<div class="screen">
+    <div class="blend-card">
+        <div class="blend">ST</div>
+        <div class="example-word">STar</div>
+        <button class="nav-btn" onclick="nextSlide()">Next ↓</button>
+    </div>
+</div>-->

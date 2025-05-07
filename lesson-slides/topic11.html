@@ -2,189 +2,174 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Vertical Slider with Dark Mode</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Champion - Phonics Competition Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --bg-color: #ffffff;
-            --text-color: #333333;
-            --btn-bg: #333333;
-            --btn-color: #ffffff;
-            --screen1-bg: #ffcccc;
-            --screen2-bg: #ccffcc;
-            --screen3-bg: #cccfff;
-        }
-
-        .dark-mode {
-            --bg-color: #1a1a1a;
-            --text-color: #ffffff;
-            --btn-bg: #4a4a4a;
-            --screen1-bg: #4d0000;
-            --screen2-bg: #004d00;
-            --screen3-bg: #00004d;
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        :root {
+            --primary-color: #6C63FF;
+            --accent-color: #FF6584;
+            --dark-color: #2F2E41;
         }
 
         body {
+            background: #f8f9fa;
+        }
+
+        .navbar {
+            background: white;
+            padding: 1rem 5%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar h1 {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #6C63FF 0%, #3F3D56 100%);
+            color: white;
+            padding: 4rem 5%;
+            text-align: center;
+        }
+
+        .student-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 2rem 5%;
+        }
+
+        .student-card {
+            background: white;
+            border-radius: 15px;
             overflow: hidden;
-            touch-action: pan-y;
-            --vh: 1vh;
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
-        .container {
-            width: 100vw;
-            height: 300vh;
-            transition: transform 0.5s ease-in-out;
+        .student-card:hover {
+            transform: translateY(-5px);
         }
 
-        .screen {
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
+        .student-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
         }
 
-        #screen1 { background-color: var(--screen1-bg); }
-        #screen2 { background-color: var(--screen2-bg); }
-        #screen3 { background-color: var(--screen3-bg); }
+        .student-info {
+            padding: 1.5rem;
+        }
 
-        .nav-btn {
-            padding: 16px 32px;
-            margin: 10px;
-            cursor: pointer;
-            background-color: var(--btn-bg);
-            color: var(--btn-color);
+        .badge {
+            background: var(--accent-color);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            display: inline-block;
+        }
+
+        .countdown {
+            background: white;
+            padding: 2rem;
+            margin: 2rem 5%;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .timer {
+            font-size: 2rem;
+            color: var(--dark-color);
+            margin: 1rem 0;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+            padding: 1rem 2rem;
             border: none;
-            border-radius: 8px;
-            font-size: 18px;
-            min-width: 140px;
-            touch-action: manipulation;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        #themeToggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 2147483647;
-            padding: 12px 24px;
-            border-radius: 8px;
+            border-radius: 30px;
             cursor: pointer;
-            background-color: var(--btn-bg);
-            color: var(--btn-color);
-            border: none;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: transform 0.2s ease;
         }
 
-        @media (min-width: 768px) {
-            .nav-btn {
-                padding: 18px 36px;
-                font-size: 20px;
-            }
+        .btn-primary:hover {
+            transform: scale(1.05);
+        }
+
+        footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 2rem 5%;
+            text-align: center;
+            margin-top: 4rem;
         }
     </style>
 </head>
 <body>
-    <button id="themeToggle" onclick="toggleTheme()">🌓 Toggle Theme</button>
-    
-    <div class="container" id="slider">
-        <div class="screen" id="screen1">
-            <h1>Screen 1</h1>
-            <button class="nav-btn" onclick="navigate(1)">Next ↓</button>
+    <nav class="navbar">
+        <h1>🏆 Word Champion</h1>
+    </nav>
+
+    <section class="hero">
+        <h2>Next Phonics Challenge Starts In:</h2>
+        <div class="countdown">
+            <div class="timer" id="timer">07:00:00</div>
+            <button class="btn-primary">Register Now</button>
         </div>
-        <div class="screen" id="screen2">
-            <h1>Screen 2</h1>
-            <button class="nav-btn" onclick="navigate(2)">Continue ↓</button>
+    </section>
+
+    <section class="upcoming-events">
+        <h3>Current Champions</h3>
+        <div class="student-grid">
+            <!-- Repeat this card for each student -->
+            <div class="student-card">
+                <div class="student-image" style="background-image: url('https://source.unsplash.com/random/400x400?face')"></div>
+                <div class="student-info">
+                    <span class="badge">Grade 3</span>
+                    <h4>Sarah Johnson</h4>
+                    <p>2023 National Champion</p>
+                </div>
+            </div>
+            <!-- Add more student cards -->
         </div>
-        <div class="screen" id="screen3">
-            <h1>Screen 3</h1>
-            <button class="nav-btn" onclick="instantRestart()">↺ Restart</button>
-        </div>
-    </div>
+    </section>
+
+    <footer>
+        <p>© 2023 Word Champion - Unleashing Phonics Excellence</p>
+    </footer>
 
     <script>
-        let currentPosition = 0;
-        const slider = document.getElementById('slider');
-        const themeToggle = document.getElementById('themeToggle');
+        // Countdown Timer
+        function updateTimer() {
+            const timerElement = document.getElementById('timer');
+            let time = 7 * 60 * 60; // 7 hours in seconds
 
-        // Theme management
-        function toggleTheme() {
-            document.body.classList.toggle('dark-mode');
-            localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+            setInterval(() => {
+                time--;
+                const hours = Math.floor(time / 3600);
+                const minutes = Math.floor((time % 3600) / 60);
+                const seconds = time % 60;
+
+                timerElement.textContent = 
+                    `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            }, 1000);
         }
 
-        // Check saved theme
-        if (localStorage.getItem('theme') === 'dark') {
-            document.body.classList.add('dark-mode');
-        }
-
-        // Set dynamic viewport height
-        const setVH = () => {
-            const vh = window.innerHeight * 0.01;
-            document.documentElement.style.setProperty('--vh', `${vh}px`);
-        };
-        
-        setVH();
-        window.addEventListener('resize', setVH);
-        window.addEventListener('orientationchange', setVH);
-
-        function navigate(position) {
-            currentPosition = position;
-            updateSliderPosition();
-        }
-
-        function instantRestart() {
-            slider.style.transition = 'none';
-            currentPosition = 0;
-            updateSliderPosition();
-            void slider.offsetHeight;
-            slider.style.transition = '';
-        }
-
-        function updateSliderPosition() {
-            slider.style.transform = `translateY(-${currentPosition * 100}vh)`;
-        }
-
-        // Touch/swipe handling
-        let startY = 0;
-        const swipeThreshold = 50;
-
-        document.addEventListener('touchstart', e => {
-            startY = e.touches[0].clientY;
-        });
-
-        document.addEventListener('touchend', handleSwipe);
-        document.addEventListener('mousedown', e => {
-            startY = e.clientY;
-        });
-        document.addEventListener('mouseup', handleSwipe);
-
-        function handleSwipe(e) {
-            const endY = e.changedTouches?.[0].clientY || e.clientY;
-            const deltaY = endY - startY;
-
-            if (Math.abs(deltaY) > swipeThreshold) {
-                if (deltaY > 0) {
-                    navigate(Math.max(0, currentPosition - 1));
-                } else {
-                    navigate(Math.min(2, currentPosition + 1));
-                }
-            }
-        }
-
-        // Mobile address bar handling
-        window.addEventListener('load', () => setTimeout(() => window.scrollTo(0, 1), 0));
+        updateTimer();
     </script>
 </body>
 </html>
