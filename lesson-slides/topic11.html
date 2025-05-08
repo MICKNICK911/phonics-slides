@@ -38,10 +38,120 @@
         }
 
         .hero {
-            background: linear-gradient(135deg, #6C63FF 0%, #3F3D56 100%);
-            color: white;
-            padding: 4rem 5%;
+            position: relative;
+            padding: 6rem 5%;
             text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)),
+                        url('../assets/winners/bg1.png');
+            var(--primary-color);
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+        }
+
+        .hero .countdown {
+            position: relative;
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 600px;
+        }
+
+        /* Sponsor Section Styles */
+        .sponsor-section {
+            background: linear-gradient(45deg, #FF9A8B 0%, #FF6A88 100%);
+            padding: 2rem 5%;
+            margin: 2rem 5%;
+            border-radius: 15px;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            box-shadow: 0 4px 15px rgba(255,106,136,0.3);
+            position: relative;
+        }
+
+        .sponsor-badge {
+            background: #fff;
+            color: #FF6A88;
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .sponsor-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid white;
+            object-fit: cover;
+        }
+
+        .sponsor-content {
+            flex: 1;
+        }
+
+        .tuition-ad {
+            background: white;
+            padding: 0 1.5rem;
+            border-radius: 10px;
+            color: var(--dark-color);
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .tuition-ad.active {
+            max-height: 500px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .toggle-ad-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            position: absolute;
+            right: 2rem;
+            bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-ad-btn:hover {
+            background: #5b54d6;
+        }
+
+        .toggle-ad-btn::after {
+            content: '▼';
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+
+        .toggle-ad-btn.active::after {
+            transform: rotate(180deg);
         }
 
         .student-grid {
@@ -64,7 +174,8 @@
         }
 
         .student-image {
-            height: 200px;
+            height: 520px;
+            width: 100%;
             background-size: cover;
             background-position: center;
         }
@@ -117,6 +228,26 @@
             text-align: center;
             margin-top: 4rem;
         }
+
+        @media (max-width: 768px) {
+            .sponsor-section {
+                flex-direction: column;
+                text-align: center;
+                padding-bottom: 4rem;
+            }
+            
+            .sponsor-image {
+                width: 100px;
+                height: 100px;
+            }
+
+            .toggle-ad-btn {
+                position: static;
+                margin-top: 1rem;
+                width: 100%;
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 <body>
@@ -132,19 +263,55 @@
         </div>
     </section>
 
+    <section class="sponsor-section">
+        <img src="https://avatars.githubusercontent.com/u/105696656?v=4" class="sponsor-image" alt="Phonics Expert">
+        <div class="sponsor-content">
+            <div class="sponsor-badge">Official Sponsor</div>
+            <h3>Sir. Mick<br>
+            <small>Phonics Expert | Crystal Heights International School</small></h3>
+            
+            <div class="contact-details">
+                📧 www.sirmick04@gmail.com<br>
+                📱 +233545800158
+                📱 +233279645804
+            </div>
+
+            <div class="tuition-ad">
+                <h4>🌟 Online Phonics Mastery Class 🌟</h4>
+                <p>Now offering affordable online sessions!</p>
+                <ul>
+                    <li>📚 Personalized 1-on-1 Sessions</li>
+                    <li>💰 Affordable Price</li>
+                    <!--<li>🎯 Competition Preparation Available</li>-->
+                </ul>
+                <button class="btn-primary" style="background: var(--accent-color); margin-top: 1rem;">
+                    Book A Session
+                </button>
+            </div>
+        </div>
+        <button class="toggle-ad-btn" onclick="toggleTuitionAd(this)">View Tuition Offer</button>
+    </section>
+
     <section class="upcoming-events">
-        <h3>Current Champions</h3>
+        <h3 style="padding: 0 5%">Current Champions</h3>
         <div class="student-grid">
-            <!-- Repeat this card for each student -->
             <div class="student-card">
-                <div class="student-image" style="background-image: url('https://source.unsplash.com/random/400x400?face')"></div>
+                <div class="student-image" style="background-image: url('../assets/winners/cvc-a-g1.png');"></div>
                 <div class="student-info">
-                    <span class="badge">Grade 3</span>
-                    <h4>Sarah Johnson</h4>
-                    <p>2023 National Champion</p>
+                    <span class="badge">Grade 1</span>
+                    <h4>Nunya Avotri</h4>
+                    <p>Vacation Contest</p>
+                    <div style="font-size: 10px; color: grey">April 17th 2025</div>
                 </div>
             </div>
-            <!-- Add more student cards -->
+            <div class="student-card">
+                <div class="student-image" style="background-image: url('https://source.unsplash.com/random/400x400?boy')"></div>
+                <div class="student-info">
+                    <span class="badge">Grade 5</span>
+                    <h4>Michael Chen</h4>
+                    <p>2023 Regional Winner</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -167,6 +334,14 @@
                 timerElement.textContent = 
                     `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
             }, 1000);
+        }
+
+        // Tuition Ad Toggle
+        function toggleTuitionAd(btn) {
+            const sponsorSection = btn.closest('.sponsor-section');
+            const tuitionAd = sponsorSection.querySelector('.tuition-ad');
+            btn.classList.toggle('active');
+            tuitionAd.classList.toggle('active');
         }
 
         updateTimer();
