@@ -1,350 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Word Champion - Phonics Competition Platform</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../dist/reveal.css">
     <style>
-        * {
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --accent: #2196F3;
+        }
+
+        body[data-theme="dark"] {
+            --bg-color: #1a1a1a;
+            --text-color: #ffffff;
+            --accent: #80FF00;
+        }
+
+        html, body, .reveal, .slides, section {
+            height: 100%;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
+            /* justify-self: center;
+            justify-content: center; */
         }
 
-        :root {
-            --primary-color: #6C63FF;
-            --accent-color: #FF6584;
-            --dark-color: #2F2E41;
-        }
-
-        body {
-            background: #f8f9fa;
-        }
-
-        .navbar {
-            background: white;
-            padding: 1rem 5%;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .navbar h1 {
-            color: var(--primary-color);
-            font-weight: 700;
-        }
-
-        .hero {
-            position: relative;
-            padding: 6rem 5%;
-            text-align: center;
-            color: white;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)),
-                        url('../assets/winners/bg1.png');
-            var(--primary-color);
-            background-size: cover;
-            background-position: center;
-            z-index: -1;
-        }
-
-        .hero .countdown {
-            position: relative;
-            z-index: 1;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(5px);
-            border-radius: 15px;
-            padding: 2rem;
-            margin: 2rem auto;
-            max-width: 600px;
-        }
-
-        /* Sponsor Section Styles */
-        .sponsor-section {
-            background: linear-gradient(45deg, #FF9A8B 0%, #FF6A88 100%);
-            padding: 2rem 5%;
-            margin: 2rem 5%;
-            border-radius: 15px;
-            color: white;
-            display: flex;
+        .slide-content {
+            height: 100vh;
+            display: flex !important;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            gap: 2rem;
-            box-shadow: 0 4px 15px rgba(255,106,136,0.3);
-            position: relative;
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--bg-color);
+            color: var(--text-color);
         }
 
-        .sponsor-badge {
-            background: #fff;
-            color: #FF6A88;
-            padding: 0.5rem 1.5rem;
-            border-radius: 30px;
-            font-size: 0.9rem;
-            font-weight: bold;
-            display: inline-block;
-            margin-bottom: 1rem;
-        }
-
-        .sponsor-image {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            border: 3px solid white;
-            object-fit: cover;
-        }
-
-        .sponsor-content {
-            flex: 1;
-        }
-
-        .tuition-ad {
-            background: white;
-            padding: 0 1.5rem;
-            border-radius: 10px;
-            color: var(--dark-color);
-            max-height: 0;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .tuition-ad.active {
-            max-height: 500px;
-            padding: 1.5rem;
-            margin-top: 1rem;
-        }
-
-        .toggle-ad-btn {
-            background: var(--primary-color);
-            color: white;
+        .next-btn {
+            position: absolute;
+            bottom: 30px;
+            padding: 12px 24px;
+            background: var(--accent);
+            color: var(--bg-color);
             border: none;
-            padding: 0.8rem 1.5rem;
             border-radius: 25px;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            position: absolute;
-            right: 2rem;
-            bottom: 1.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .toggle-ad-btn:hover {
-            background: #5b54d6;
-        }
-
-        .toggle-ad-btn::after {
-            content: '▼';
-            font-size: 0.8rem;
+            font-size: 1.1rem;
             transition: transform 0.3s ease;
         }
 
-        .toggle-ad-btn.active::after {
-            transform: rotate(180deg);
-        }
-
-        .student-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            padding: 2rem 5%;
-        }
-
-        .student-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            transition: transform 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .student-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .student-image {
-            height: 520px;
-            width: 100%;
-            background-size: cover;
-            background-position: center;
-        }
-
-        .student-info {
-            padding: 1.5rem;
-        }
-
-        .badge {
-            background: var(--accent-color);
-            color: white;
-            padding: 0.3rem 1rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            display: inline-block;
-        }
-
-        .countdown {
-            background: white;
-            padding: 2rem;
-            margin: 2rem 5%;
-            border-radius: 15px;
-            text-align: center;
-        }
-
-        .timer {
-            font-size: 2rem;
-            color: var(--dark-color);
-            margin: 1rem 0;
-        }
-
-        .btn-primary {
-            background: var(--primary-color);
-            color: white;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: transform 0.2s ease;
-        }
-
-        .btn-primary:hover {
+        .next-btn:hover {
             transform: scale(1.05);
         }
 
-        footer {
-            background: var(--dark-color);
-            color: white;
-            padding: 2rem 5%;
-            text-align: center;
-            margin-top: 4rem;
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            padding: 10px 20px;
+            background: var(--accent);
+            color: var(--bg-color);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
         }
 
         @media (max-width: 768px) {
-            .sponsor-section {
-                flex-direction: column;
-                text-align: center;
-                padding-bottom: 4rem;
+            .slide-content {
+                padding: 1rem;
+                font-size: 0.9em;
             }
-            
-            .sponsor-image {
-                width: 100px;
-                height: 100px;
-            }
-
-            .toggle-ad-btn {
-                position: static;
-                margin-top: 1rem;
-                width: 100%;
-                justify-content: center;
+            .next-btn {
+                bottom: 15px;
+                font-size: 1rem;
             }
         }
     </style>
 </head>
-<body>
-    <nav class="navbar">
-        <h1>🏆 Word Champion</h1>
-    </nav>
-
-    <section class="hero">
-        <h2>Next Phonics Challenge Starts In:</h2>
-        <div class="countdown">
-            <div class="timer" id="timer">07:00:00</div>
-            <button class="btn-primary">Register Now</button>
-        </div>
-    </section>
-
-    <section class="sponsor-section">
-        <img src="https://avatars.githubusercontent.com/u/105696656?v=4" class="sponsor-image" alt="Phonics Expert">
-        <div class="sponsor-content">
-            <div class="sponsor-badge">Official Sponsor</div>
-            <h3>Sir. Mick<br>
-            <small>Phonics Expert | Crystal Heights International School</small></h3>
-            
-            <div class="contact-details">
-                📧 www.sirmick04@gmail.com<br>
-                📱 +233545800158
-                📱 +233279645804
-            </div>
-
-            <div class="tuition-ad">
-                <h4>🌟 Online Phonics Mastery Class 🌟</h4>
-                <p>Now offering affordable online sessions!</p>
-                <ul>
-                    <li>📚 Personalized 1-on-1 Sessions</li>
-                    <li>💰 Affordable Price</li>
-                    <!--<li>🎯 Competition Preparation Available</li>-->
-                </ul>
-                <button class="btn-primary" style="background: var(--accent-color); margin-top: 1rem;">
-                    Book A Session
-                </button>
-            </div>
-        </div>
-        <button class="toggle-ad-btn" onclick="toggleTuitionAd(this)">View Tuition Offer</button>
-    </section>
-
-    <section class="upcoming-events">
-        <h3 style="padding: 0 5%">Current Champions</h3>
-        <div class="student-grid">
-            <div class="student-card">
-                <div class="student-image" style="background-image: url('../assets/winners/cvc-a-g1.png');"></div>
-                <div class="student-info">
-                    <span class="badge">Grade 1</span>
-                    <h4>Nunya Avotri</h4>
-                    <p>Vacation Contest</p>
-                    <div style="font-size: 10px; color: grey">April 17th 2025</div>
+<body data-theme="light"> <!-- Added initial theme -->
+    <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+    
+    <div class="reveal">
+        <div class="slides">
+            <!-- Slide 1 -->
+            <section>
+                <div class="slide-content">
+                    <h1>First Slide</h1>
+                    <p>Content goes here</p>
+                    <button class="next-btn" onclick="Reveal.next()">Next →</button>
                 </div>
-            </div>
-            <div class="student-card">
-                <div class="student-image" style="background-image: url('https://source.unsplash.com/random/400x400?boy')"></div>
-                <div class="student-info">
-                    <span class="badge">Grade 5</span>
-                    <h4>Michael Chen</h4>
-                    <p>2023 Regional Winner</p>
+            </section>
+
+            <!-- Slide 2 -->
+            <section>
+                <div class="slide-content">
+                    <h2>Second Slide</h2>
+                    <p>More content here</p>
+                    <button class="next-btn" onclick="Reveal.next()">Next →</button>
                 </div>
-            </div>
+            </section>
+
+            <!-- Slide 3 -->
+            <section>
+                <div class="slide-content">
+                    <h1>Final Slide</h1>
+                    <p>Last content section</p>
+                    <p>Last content section</p>
+                    <p>Last content section</p>
+                    <p>Last content section</p>
+                    <p>Last content section</p>
+                    <p>Last content section</p>
+                    <p>Last content section</p>
+                    <p>Last content section</p>
+                    <p>Last content section</p>
+                    <p>Last content section</p>
+                    <p>Last content section</p>
+                    <p>Last content section</p>
+                    <p>Last content section</p>
+                    <p>Last content section</p>
+                    <button class="next-btn" onclick="Reveal.slide(0)">Restart →</button>
+                </div>
+            </section>
         </div>
-    </section>
+    </div>
 
-    <footer>
-        <p>© 2023 Word Champion - Unleashing Phonics Excellence</p>
-    </footer>
-
+    <script src="../dist/reveal.js"></script>
     <script>
-        // Countdown Timer
-        function updateTimer() {
-            const timerElement = document.getElementById('timer');
-            let time = 7 * 60 * 60; // 7 hours in seconds
+        Reveal.initialize({
+            controls: false,
+            progress: false,
+            center: true,
+            hash: true,
+            transition: 'slide',
+            width: '100%',
+            height: '100%',
+            margin: 0.1,
+            minScale: 0.2,
+            maxScale: 1.5,
+            disableLayout: true,
+            embedded: false,
+            touch: true
+        });
 
-            setInterval(() => {
-                time--;
-                const hours = Math.floor(time / 3600);
-                const minutes = Math.floor((time % 3600) / 60);
-                const seconds = time % 60;
-
-                timerElement.textContent = 
-                    `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-            }, 1000);
+        function toggleTheme() {
+            const currentTheme = document.body.getAttribute('data-theme');
+            document.body.setAttribute('data-theme', 
+                currentTheme === 'dark' ? 'light' : 'dark');
         }
-
-        // Tuition Ad Toggle
-        function toggleTuitionAd(btn) {
-            const sponsorSection = btn.closest('.sponsor-section');
-            const tuitionAd = sponsorSection.querySelector('.tuition-ad');
-            btn.classList.toggle('active');
-            tuitionAd.classList.toggle('active');
-        }
-
-        updateTimer();
     </script>
 </body>
 </html>
