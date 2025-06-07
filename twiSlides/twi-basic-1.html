@@ -51,7 +51,7 @@
         }
 
         .heading {
-            font-size: 50px;
+            font-size: 40px;
             font-family: 'Times New Roman', Times, serif;
             font-weight: bold;
         }
@@ -67,24 +67,24 @@
 
         .letter-card-conso {
             display: grid; 
-            height: 100vh;
-            grid-template-columns: repeat(11, 1fr);
+            height: 60vh;
+            grid-template-columns: repeat(7, 1fr);
             gap: 10px;
             padding: 10px;
             justify-items: center;
             /* text-align: center; */
-            max-width: 100%;
+            max-width: 1000px;
         }
 
         .letter {
-            font-size: 120px;
+            font-size: 85px;
             font-weight: bold;
             margin: 20px 0;
             transition: font-size 0.2s ease;
         }
 
         .conso{
-          font-size: 120px;  
+          font-size: 85px;  
         }
 
         .blends{
@@ -205,12 +205,12 @@
 
         @media only screen and (max-width: 730px) {
         .topic {
-           font-size: 60px;
+           font-size: 30px;
            font-family: 'Times New Roman', Times, serif;
         }
         
         .letter {
-            font-size: 40px;
+            font-size: 30px;
         }
 
         .silentE {
@@ -223,7 +223,7 @@
 
 
         .conso{
-            font-size: 40px;  
+            font-size: 30px;  
             }
 
         .heading {
@@ -236,11 +236,11 @@
             display: grid; 
             height: 60vh;
             grid-template-columns: repeat(5, 1fr);
-            gap: 10px;
-            padding: 35px;
+            gap: 8px;
+            padding: 0px;
             justify-items: center;
             /* text-align: center; */
-            max-width: 90%;
+            max-width: 1000px;
         }
 
         .topics-card { 
@@ -270,14 +270,14 @@
 
         <div class="screen">
             <div class="topics-card">
-                <button class="homepage-btn" onclick="instantNav(1)" aria-label="test">Vowels</button>
-                <button class="homepage-btn" onclick="instantNav(3)" aria-label="test">Consonants</button>
-                <button class="homepage-btn" onclick="instantNav(4)" aria-label="test">CVC & CVCe</button>
-                <button class="homepage-btn" onclick="instantNav(29)" aria-label="test">Open Syllable</button>
-                <button class="homepage-btn" onclick="instantNav(45)" aria-label="test">Blends</button>
+                <button class="homepage-btn" onclick="instantNav(1)" aria-label="test">Twi Nkyerewde</button>
+                <button class="homepage-btn" onclick="instantNav(2)" aria-label="test">Ano Nnyegyee</button>
+                <button class="homepage-btn" onclick="instantNav(3)" aria-label="test">Anum Nnyegyeɛ</button>
+                <button class="homepage-btn" onclick="instantNav(4)" aria-label="test">Ano ne Anum Nnyegyeɛ</button>
+                <!--<button class="homepage-btn" onclick="instantNav(45)" aria-label="test">Blends</button>
                 <button class="homepage-btn" onclick="instantNav(46)" aria-label="test">Beginning Blends</button>
                 <button class="homepage-btn" onclick="instantNav(72)" aria-label="test">Ending Blends</button>
-                <button class="homepage-btn" onclick="instantNav(91)" aria-label="test">Digraphs</button>
+                <button class="homepage-btn" onclick="instantNav(91)" aria-label="test">Digraphs</button>-->
 
             </div>
         </div>
@@ -432,7 +432,7 @@
         </div>
 
         <div class="screen">
-            <div class="heading">Anum Ne Ano Nnyegyeɛ E</div>
+            <div class="heading">Anum Ne Ano Nnyegyeɛ O</div>
             <div class="letter-card-conso">
                 <div class="letter conso" data-upper="BO" data-lower="bo">B</div>
                 <div class="letter conso" data-upper="DO" data-lower="do">D</div>
@@ -451,863 +451,68 @@
                 <div class="letter conso" data-upper="YO" data-lower="yo">Y</div>
             </div>
         </div>
-
         <div class="screen">
-            <!-- <div class="heading">CVC & CVCe</div> -->
-            <div class="letter-card">
-                <div class="topic">CVC & CVCe</div>
+            <div class="heading">Anum Ne Ano Nnyegyeɛ U</div>
+            <div class="letter-card-conso">
+                <div class="letter conso" data-upper="BU" data-lower="bu">B</div>
+                <div class="letter conso" data-upper="DU" data-lower="du">D</div>
+                <div class="letter conso" data-upper="FU" data-lower="fu">F</div>
+                <div class="letter conso" data-upper="GU" data-lower="gu">G</div>
+                <div class="letter conso" data-upper="HU" data-lower="hu">H</div>
+                <div class="letter conso" data-upper="KU" data-lower="ku">K</div>
+                <div class="letter conso" data-upper="LU" data-lower="lu">L</div>
+                <div class="letter conso" data-upper="MU" data-lower="mu">M</div>
+                <div class="letter conso" data-upper="NU" data-lower="nu">N</div>
+                <div class="letter conso" data-upper="PU" data-lower="pu">P</div>
+                <div class="letter conso" data-upper="RU" data-lower="ru">R</div>
+                <div class="letter conso" data-upper="SU" data-lower="su">S</div>
+                <div class="letter conso" data-upper="TU" data-lower="tu">T</div>
+                <div class="letter conso" data-upper="WU" data-lower="wu">W</div>
+                <div class="letter conso" data-upper="YU" data-lower="yu">Y</div>
             </div>
         </div>
-
         <div class="screen">
-            <div class="letter-card">
-                <div class="letter cvc" data-upper="M" data-lower="m">A</div>
-                <div class="letter cvc" data-upper="A" data-lower="a">A</div>
-                <div class="letter cvc" data-upper="T" data-lower="t">A</div>
-                <div class="letter cvc silentE" data-upper="E" data-lower="e">E</div>
+            <div class="heading">Anum Ne Ano Nnyegyeɛ Ɔ</div>
+            <div class="letter-card-conso">
+                <div class="letter conso" data-upper="BƆ" data-lower="bɔ">B</div>
+                <div class="letter conso" data-upper="DƆ" data-lower="dɔ">D</div>
+                <div class="letter conso" data-upper="FƆ" data-lower="fɔ">F</div>
+                <div class="letter conso" data-upper="GƆ" data-lower="gɔ">G</div>
+                <div class="letter conso" data-upper="HƆ" data-lower="hɔ">H</div>
+                <div class="letter conso" data-upper="KƆ" data-lower="kɔ">K</div>
+                <div class="letter conso" data-upper="LƆ" data-lower="lɔ">L</div>
+                <div class="letter conso" data-upper="MƆ" data-lower="mɔ">M</div>
+                <div class="letter conso" data-upper="NƆ" data-lower="nɔ">N</div>
+                <div class="letter conso" data-upper="PƆ" data-lower="pɔ">P</div>
+                <div class="letter conso" data-upper="RƆ" data-lower="rɔ">R</div>
+                <div class="letter conso" data-upper="SƆ" data-lower="sɔ">S</div>
+                <div class="letter conso" data-upper="TƆ" data-lower="tɔ">T</div>
+                <div class="letter conso" data-upper="WƆ" data-lower="wɔ">W</div>
+                <div class="letter conso" data-upper="YƆ" data-lower="yɔ">Y</div>
             </div>
-        </div>
-
-        <!-- hat -->
-        <div class="screen">
-        <div class="letter-card">
-            <div class="letter cvc" data-upper="H" data-lower="h">H</div>
-            <div class="letter cvc" data-upper="A" data-lower="a">A</div>
-            <div class="letter cvc" data-upper="T" data-lower="t">T</div>
-            <div class="letter cvc silentE" data-upper="E" data-lower="e">E</div>
-        </div>
-        </div>
-
-        <!-- tap -->
-        <div class="screen">
-        <div class="letter-card">
-            <div class="letter cvc" data-upper="T" data-lower="t">T</div>
-            <div class="letter cvc" data-upper="A" data-lower="a">A</div>
-            <div class="letter cvc" data-upper="P" data-lower="p">P</div>
-            <div class="letter cvc silentE" data-upper="E" data-lower="e">E</div>
-        </div>
-        </div>
-
-        <!-- fat -->
-        <div class="screen">
-        <div class="letter-card">
-            <div class="letter cvc" data-upper="F" data-lower="f">F</div>
-            <div class="letter cvc" data-upper="A" data-lower="a">A</div>
-            <div class="letter cvc" data-upper="T" data-lower="t">T</div>
-            <div class="letter cvc silentE" data-upper="E" data-lower="e">E</div>
-        </div>
-        </div>
-
-        <!-- rat -->
-        <div class="screen">
-        <div class="letter-card">
-            <div class="letter cvc" data-upper="R" data-lower="r">R</div>
-            <div class="letter cvc" data-upper="A" data-lower="a">A</div>
-            <div class="letter cvc" data-upper="T" data-lower="t">T</div>
-            <div class="letter cvc silentE" data-upper="E" data-lower="e">E</div>
-        </div>
-        </div>
-
-        <!-- pet -->
-        <div class="screen">
-        <div class="letter-card">
-            <div class="letter cvc" data-upper="P" data-lower="p">P</div>
-            <div class="letter cvc" data-upper="E" data-lower="e">E</div>
-            <div class="letter cvc" data-upper="T" data-lower="t">T</div>
-            <div class="letter cvc silentE" data-upper="E" data-lower="e">E</div>
-        </div>
-        </div>
-
-        <!-- met -->
-         <div class="screen">
-        <div class="letter-card">
-            <div class="letter cvc" data-upper="M" data-lower="m">M</div>
-            <div class="letter cvc" data-upper="E" data-lower="e">E</div>
-            <div class="letter cvc" data-upper="T" data-lower="t">T</div>
-            <div class="letter cvc silentE" data-upper="E" data-lower="e">E</div>
-        </div>
-        </div>
-
-        <!-- red -->
-         <div class="screen">
-        <div class="letter-card">
-            <div class="letter cvc" data-upper="R" data-lower="r">R</div>
-            <div class="letter cvc" data-upper="E" data-lower="e">E</div>
-            <div class="letter cvc" data-upper="D" data-lower="d">D</div>
-            <div class="letter cvc silentE" data-upper="E" data-lower="e">E</div>
-        </div>
-        </div>
-
-        <!-- her -->
-         <div class="screen">
-        <div class="letter-card">
-            <div class="letter cvc" data-upper="H" data-lower="h">H</div>
-            <div class="letter cvc" data-upper="E" data-lower="e">E</div>
-            <div class="letter cvc" data-upper="R" data-lower="r">R</div>
-            <div class="letter cvc silentE" data-upper="E" data-lower="e">E</div>
-        </div>
-        </div>
-
-        <!-- bit -->
-         <div class="screen">
-        <div class="letter-card">
-            <div class="letter cvc" data-upper="B" data-lower="b">B</div>
-            <div class="letter cvc" data-upper="I" data-lower="i">I</div>
-            <div class="letter cvc" data-upper="T" data-lower="t">T</div>
-            <div class="letter cvc silentE" data-upper="E" data-lower="e">E</div>
-        </div>
-        </div>
-
-        <!-- fin -->
-         <div class="screen">
-        <div class="letter-card">
-            <div class="letter cvc" data-upper="F" data-lower="f">F</div>
-            <div class="letter cvc" data-upper="I" data-lower="i">I</div>
-            <div class="letter cvc" data-upper="N" data-lower="n">N</div>
-            <div class="letter cvc silentE" data-upper="E" data-lower="e">E</div>
-        </div>
-        </div>
-
-        <!-- kit -->
-         <div class="screen">
-        <div class="letter-card">
-            <div class="letter cvc" data-upper="K" data-lower="k">K</div>
-            <div class="letter cvc" data-upper="I" data-lower="i">I</div>
-            <div class="letter cvc" data-upper="T" data-lower="t">T</div>
-            <div class="letter cvc silentE" data-upper="E" data-lower="e">E</div>
-        </div>
-        </div>
-
-        <!-- win -->
-         <div class="screen">
-        <div class="letter-card">
-            <div class="letter cvc" data-upper="W" data-lower="w">W</div>
-            <div class="letter cvc" data-upper="I" data-lower="i">I</div>
-            <div class="letter cvc" data-upper="N" data-lower="n">N</div>
-            <div class="letter cvc silentE" data-upper="E" data-lower="e">E</div>
-        </div>
-        </div>
-
-        <!-- sit -->
-         <div class="screen">
-        <div class="letter-card">
-            <div class="letter cvc" data-upper="S" data-lower="s">S</div>
-            <div class="letter cvc" data-upper="I" data-lower="i">I</div>
-            <div class="letter cvc" data-upper="T" data-lower="t">T</div>
-            <div class="letter cvc silentE" data-upper="E" data-lower="e">E</div>
-        </div>
-        </div>
-
-        <!-- con -->
-         <div class="screen">
-        <div class="letter-card">
-            <div class="letter cvc" data-upper="C" data-lower="c">C</div>
-            <div class="letter cvc" data-upper="O" data-lower="o">O</div>
-            <div class="letter cvc" data-upper="N" data-lower="n">N</div>
-            <div class="letter cvc silentE" data-upper="E" data-lower="e">E</div>
-        </div>
-        </div>
-
-        <!-- dot -->
-         <div class="screen">
-        <div class="letter-card">
-            <div class="letter cvc" data-upper="D" data-lower="d">D</div>
-            <div class="letter cvc" data-upper="O" data-lower="o">O</div>
-            <div class="letter cvc" data-upper="T" data-lower="t">T</div>
-            <div class="letter cvc silentE" data-upper="E" data-lower="e">E</div>
-        </div>
-        </div>
-
-        <!-- bon -->
-         <div class="screen">
-        <div class="letter-card">
-            <div class="letter cvc" data-upper="B" data-lower="b">B</div>
-            <div class="letter cvc" data-upper="O" data-lower="o">O</div>
-            <div class="letter cvc" data-upper="N" data-lower="n">N</div>
-            <div class="letter cvc silentE" data-upper="E" data-lower="e">E</div>
-        </div>
-        </div>
-
-        <!-- pop -->
-         <div class="screen">
-        <div class="letter-card">
-            <div class="letter cvc" data-upper="P" data-lower="p">P</div>
-            <div class="letter cvc" data-upper="O" data-lower="o">O</div>
-            <div class="letter cvc" data-upper="P" data-lower="p">P</div>
-            <div class="letter cvc silentE" data-upper="E" data-lower="e">E</div>
-        </div>
-        </div>
-
-        <!-- ton -->
-         <div class="screen">
-        <div class="letter-card">
-            <div class="letter cvc" data-upper="T" data-lower="t">T</div>
-            <div class="letter cvc" data-upper="O" data-lower="o">O</div>
-            <div class="letter cvc" data-upper="N" data-lower="n">N</div>
-            <div class="letter cvc silentE" data-upper="E" data-lower="e">E</div>
-        </div>
-        </div>
-
-        <!-- cut -->
-         <div class="screen">
-        <div class="letter-card">
-            <div class="letter cvc" data-upper="C" data-lower="c">C</div>
-            <div class="letter cvc" data-upper="U" data-lower="u">U</div>
-            <div class="letter cvc" data-upper="T" data-lower="t">T</div>
-            <div class="letter cvc silentE" data-upper="E" data-lower="e">E</div>
-        </div>
-        </div>
-
-        <!-- tub -->
-         <div class="screen">
-        <div class="letter-card">
-            <div class="letter cvc" data-upper="T" data-lower="t">T</div>
-            <div class="letter cvc" data-upper="U" data-lower="u">U</div>
-            <div class="letter cvc" data-upper="B" data-lower="b">B</div>
-            <div class="letter cvc silentE" data-upper="E" data-lower="e">E</div>
-        </div>
         </div>
         
-        <!-- cub -->
-         <div class="screen">
-        <div class="letter-card">
-            <div class="letter cvc" data-upper="C" data-lower="c">C</div>
-            <div class="letter cvc" data-upper="U" data-lower="u">U</div>
-            <div class="letter cvc" data-upper="B" data-lower="b">B</div>
-            <div class="letter cvc silentE" data-upper="E" data-lower="e">E</div>
-        </div>
-        </div>
-
-        <!-- hug -->
-         <div class="screen">
-        <div class="letter-card">
-            <div class="letter cvc" data-upper="H" data-lower="h">H</div>
-            <div class="letter cvc" data-upper="U" data-lower="u">U</div>
-            <div class="letter cvc" data-upper="G" data-lower="g">G</div>
-            <div class="letter cvc silentE" data-upper="E" data-lower="e">E</div>
-        </div>
-        </div>
-
-        <!-- rub -->
-         <div class="screen">
-        <div class="letter-card">
-            <div class="letter cvc" data-upper="R" data-lower="r">R</div>
-            <div class="letter cvc" data-upper="U" data-lower="u">U</div>
-            <div class="letter cvc" data-upper="B" data-lower="b">B</div>
-            <div class="letter cvc silentE" data-upper="E" data-lower="e">E</div>
-        </div>
-        </div>
-
         <div class="screen">
-            <!-- <div class="heading">CVC & CVCe</div> -->
-            <div class="letter-card">
-                <div class="topic">Open Syllable</div>
-            </div>
-        </div>
+    <div class="heading">Anum Ne Ano Nnyegyeɛ Ɛ</div>
+    <div class="letter-card-conso">
+        <div class="letter conso" data-upper="BƐ" data-lower="bɛ">B</div>
+        <div class="letter conso" data-upper="DƐ" data-lower="dɛ">D</div>
+        <div class="letter conso" data-upper="FƐ" data-lower="fɛ">F</div>
+        <div class="letter conso" data-upper="GƐ" data-lower="gɛ">G</div>
+        <div class="letter conso" data-upper="HƐ" data-lower="hɛ">H</div>
+        <div class="letter conso" data-upper="KƐ" data-lower="kɛ">K</div>
+        <div class="letter conso" data-upper="LƐ" data-lower="lɛ">L</div>
+        <div class="letter conso" data-upper="MƐ" data-lower="mɛ">M</div>
+        <div class="letter conso" data-upper="NƐ" data-lower="nɛ">N</div>
+        <div class="letter conso" data-upper="PƐ" data-lower="pɛ">P</div>
+        <div class="letter conso" data-upper="RƐ" data-lower="rɛ">R</div>
+        <div class="letter conso" data-upper="SƐ" data-lower="sɛ">S</div>
+        <div class="letter conso" data-upper="TƐ" data-lower="tɛ">T</div>
+        <div class="letter conso" data-upper="WƐ" data-lower="wɛ">W</div>
+        <div class="letter conso" data-upper="YƐ" data-lower="yɛ">Y</div>
+    </div>
+</div>
 
-        <!-- me -->
-        <div class="screen">
-            <div class="letter-card">
-                <div class="letter cvc" data-upper="M" data-lower="m">M</div>
-                <div class="letter cvc" data-upper="E" data-lower="e">E</div>
-            </div>
-        </div>
-
-        <!-- she -->
-        <div class="screen">
-            <div class="letter-card">
-                <div class="letter cvc" data-upper="S" data-lower="s">S</div>
-                <div class="letter cvc" data-upper="H" data-lower="h">H</div>
-                <div class="letter cvc" data-upper="E" data-lower="e">E</div>
-            </div>
-        </div>
-
-        <!-- we -->
-        <div class="screen">
-            <div class="letter-card">
-                <div class="letter cvc" data-upper="W" data-lower="w">W</div>
-                <div class="letter cvc" data-upper="E" data-lower="e">E</div>
-            </div>
-        </div>
-
-        <!-- be -->
-        <div class="screen">
-            <div class="letter-card">
-                <div class="letter cvc" data-upper="B" data-lower="b">B</div>
-                <div class="letter cvc" data-upper="E" data-lower="e">E</div>
-            </div>
-        </div>
-
-        <!-- he -->
-        <div class="screen">
-            <div class="letter-card">
-                <div class="letter cvc" data-upper="H" data-lower="h">H</div>
-                <div class="letter cvc" data-upper="E" data-lower="e">E</div>
-            </div>
-        </div>
-
-        <!-- the -->
-        <div class="screen">
-            <div class="letter-card">
-                <div class="letter cvc" data-upper="T" data-lower="t">T</div>
-                <div class="letter cvc" data-upper="H" data-lower="h">H</div>
-                <div class="letter cvc" data-upper="E" data-lower="e">E</div>
-            </div>
-        </div>
-
-        <!-- see -->
-        <div class="screen">
-            <div class="letter-card">
-                <div class="letter cvc" data-upper="S" data-lower="s">S</div>
-                <div class="letter cvc" data-upper="E" data-lower="e">E</div>
-                <div class="letter cvc" data-upper="E" data-lower="e">E</div>
-            </div>
-        </div>
-
-        <!-- bee -->
-        <div class="screen">
-            <div class="letter-card">
-                <div class="letter cvc" data-upper="B" data-lower="b">B</div>
-                <div class="letter cvc" data-upper="E" data-lower="e">E</div>
-                <div class="letter cvc" data-upper="E" data-lower="e">E</div>
-            </div>
-        </div>
-
-        <!-- so -->
-        <div class="screen">
-            <div class="letter-card">
-                <div class="letter cvc" data-upper="S" data-lower="s">S</div>
-                <div class="letter cvc" data-upper="O" data-lower="o">O</div>
-            </div>
-        </div>
-
-        <!-- lo -->
-        <div class="screen">
-            <div class="letter-card">
-                <div class="letter cvc" data-upper="L" data-lower="l">L</div>
-                <div class="letter cvc" data-upper="O" data-lower="o">O</div>
-            </div>
-        </div>
-
-        <!-- co -->
-        <div class="screen">
-            <div class="letter-card">
-                <div class="letter cvc" data-upper="C" data-lower="c">C</div>
-                <div class="letter cvc" data-upper="O" data-lower="o">O</div>
-            </div>
-        </div>
-
-        <!-- go -->
-        <div class="screen">
-            <div class="letter-card">
-                <div class="letter cvc" data-upper="G" data-lower="g">G</div>
-                <div class="letter cvc" data-upper="O" data-lower="o">O</div>
-            </div>
-        </div>
-
-        <!-- no -->
-        <div class="screen">
-            <div class="letter-card">
-                <div class="letter cvc" data-upper="N" data-lower="n">N</div>
-                <div class="letter cvc" data-upper="O" data-lower="o">O</div>
-            </div>
-        </div>
-
-        <!-- hi -->
-        <div class="screen">
-            <div class="letter-card">
-                <div class="letter cvc" data-upper="H" data-lower="h">H</div>
-                <div class="letter cvc" data-upper="I" data-lower="i">I</div>
-            </div>
-        </div>
-
-        <!-- flu -->
-        <div class="screen">
-            <div class="letter-card">
-                <div class="letter cvc" data-upper="F" data-lower="f">F</div>
-                <div class="letter cvc" data-upper="L" data-lower="l">L</div>
-                <div class="letter cvc" data-upper="U" data-lower="u">U</div>
-            </div>
-        </div>
-
-        <div class="screen">
-            <!-- <div class="heading">CVC & CVCe</div> -->
-            <div class="letter-card">
-                <div class="topic">Blends</div>
-            </div>
-        </div>
-
-        <!-- bl -->
-            <div class="screen">
-                <div class="heading">Beginning Blends</div>
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="B" data-lower="b">B</div>
-                    <div class="letter cvc" data-upper="L" data-lower="l">L</div>
-                </div>
-            </div>
-
-            <!-- cl -->
-            <div class="screen">
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="C" data-lower="c">C</div>
-                    <div class="letter cvc" data-upper="L" data-lower="l">L</div>
-                </div>
-            </div>
-
-            <!-- fl -->
-            <div class="screen">
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="F" data-lower="f">F</div>
-                    <div class="letter cvc" data-upper="L" data-lower="l">L</div>
-                </div>
-            </div>
-
-            <!-- gl -->
-            <div class="screen">
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="G" data-lower="g">G</div>
-                    <div class="letter cvc" data-upper="L" data-lower="l">L</div>
-                </div>
-            </div>
-
-            <!-- pl -->
-            <div class="screen">
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="P" data-lower="p">P</div>
-                    <div class="letter cvc" data-upper="L" data-lower="l">L</div>
-                </div>
-            </div>
-
-            <!-- st -->
-            <div class="screen">
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="S" data-lower="s">S</div>
-                    <div class="letter cvc" data-upper="T" data-lower="t">T</div>
-                </div>
-            </div>
-
-            <!-- sk -->
-            <div class="screen">
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="S" data-lower="s">S</div>
-                    <div class="letter cvc" data-upper="K" data-lower="k">K</div>
-                </div>
-            </div>
-
-            <!-- sp -->
-            <div class="screen">
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="S" data-lower="s">S</div>
-                    <div class="letter cvc" data-upper="P" data-lower="p">P</div>
-                </div>
-            </div>
-
-            <!-- sl -->
-            <div class="screen">
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="S" data-lower="s">S</div>
-                    <div class="letter cvc" data-upper="L" data-lower="l">L</div>
-                </div>
-            </div>
-
-            <!-- br -->
-            <div class="screen">
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="B" data-lower="b">B</div>
-                    <div class="letter cvc" data-upper="R" data-lower="r">R</div>
-                </div>
-            </div>
-
-            <!-- cr -->
-            <div class="screen">
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="C" data-lower="c">C</div>
-                    <div class="letter cvc" data-upper="R" data-lower="r">R</div>
-                </div>
-            </div>
-
-            <!-- dr -->
-            <div class="screen">
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="D" data-lower="d">D</div>
-                    <div class="letter cvc" data-upper="R" data-lower="r">R</div>
-                </div>
-            </div>
-
-            <!-- fr -->
-            <div class="screen">
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="F" data-lower="f">F</div>
-                    <div class="letter cvc" data-upper="R" data-lower="r">R</div>
-                </div>
-            </div>
-
-            <!-- gr -->
-            <div class="screen">
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="G" data-lower="g">G</div>
-                    <div class="letter cvc" data-upper="R" data-lower="r">R</div>
-                </div>
-            </div>
-
-            <!-- pr -->
-            <div class="screen">
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="P" data-lower="p">P</div>
-                    <div class="letter cvc" data-upper="R" data-lower="r">R</div>
-                </div>
-            </div>
-
-            <!-- tr -->
-            <div class="screen">
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="T" data-lower="t">T</div>
-                    <div class="letter cvc" data-upper="R" data-lower="r">R</div>
-                </div>
-            </div>
-
-            <!-- sc -->
-            <div class="screen">
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="S" data-lower="s">S</div>
-                    <div class="letter cvc" data-upper="C" data-lower="c">C</div>
-                </div>
-            </div>
-
-            <!-- squ -->
-            <div class="screen">
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="S" data-lower="s">S</div>
-                    <div class="letter cvc" data-upper="Q" data-lower="q">Q</div>
-                    <div class="letter cvc" data-upper="U" data-lower="u">U</div>
-                </div>
-            </div>
-
-            <!-- sm -->
-            <div class="screen">
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="S" data-lower="s">S</div>
-                    <div class="letter cvc" data-upper="M" data-lower="m">M</div>
-                </div>
-            </div>
-
-            <!-- sn -->
-            <div class="screen">
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="S" data-lower="s">S</div>
-                    <div class="letter cvc" data-upper="N" data-lower="n">N</div>
-                </div>
-            </div>
-
-            <!-- sw -->
-            <div class="screen">
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="S" data-lower="s">S</div>
-                    <div class="letter cvc" data-upper="W" data-lower="w">W</div>
-                </div>
-            </div>
-
-            <!-- tw -->
-            <div class="screen">
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="T" data-lower="t">T</div>
-                    <div class="letter cvc" data-upper="W" data-lower="w">W</div>
-                </div>
-            </div>
-
-            <!-- dw -->
-            <div class="screen">
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="D" data-lower="d">D</div>
-                    <div class="letter cvc" data-upper="W" data-lower="w">W</div>
-                </div>
-            </div>
-
-            <!-- str -->
-            <div class="screen">
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="S" data-lower="s">S</div>
-                    <div class="letter cvc" data-upper="T" data-lower="t">T</div>
-                    <div class="letter cvc" data-upper="R" data-lower="r">R</div>
-                </div>
-            </div>
-
-            <!-- spr -->
-            <div class="screen">
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="S" data-lower="s">S</div>
-                    <div class="letter cvc" data-upper="P" data-lower="p">P</div>
-                    <div class="letter cvc" data-upper="R" data-lower="r">R</div>
-                </div>
-            </div>
-
-            <!-- scr -->
-            <div class="screen">
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="S" data-lower="s">S</div>
-                    <div class="letter cvc" data-upper="C" data-lower="c">C</div>
-                    <div class="letter cvc" data-upper="R" data-lower="r">R</div>
-                </div>
-            </div>
-
-            <!-- st -->
-            <div class="screen">
-                <div class="heading">Ending Blends</div>
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="S" data-lower="s">S</div>
-                    <div class="letter cvc" data-upper="T" data-lower="t">T</div>
-                </div>
-            </div>
-
-            <!-- sk -->
-            <div class="screen">
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="S" data-lower="s">S</div>
-                    <div class="letter cvc" data-upper="K" data-lower="k">K</div>
-                </div>
-            </div>
-
-            <!-- sp -->
-            <div class="screen">
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="S" data-lower="s">S</div>
-                    <div class="letter cvc" data-upper="P" data-lower="p">P</div>
-                </div>
-            </div>
-
-            <!-- nd -->
-            <div class="screen">
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="N" data-lower="n">N</div>
-                    <div class="letter cvc" data-upper="D" data-lower="d">D</div>
-                </div>
-            </div>
-
-            <!-- nt -->
-            <div class="screen">
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="N" data-lower="n">N</div>
-                    <div class="letter cvc" data-upper="T" data-lower="t">T</div>
-                </div>
-            </div>
-
-            <!-- nk -->
-            <div class="screen">
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="N" data-lower="n">N</div>
-                    <div class="letter cvc" data-upper="K" data-lower="k">K</div>
-                </div>
-            </div>
-
-            <!-- mp -->
-            <div class="screen">
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="M" data-lower="m">M</div>
-                    <div class="letter cvc" data-upper="P" data-lower="p">P</div>
-                </div>
-            </div>
-
-            <!-- rd -->
-            <div class="screen">
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="R" data-lower="r">R</div>
-                    <div class="letter cvc" data-upper="D" data-lower="d">D</div>
-                </div>
-            </div>
-
-            <!-- ld -->
-            <div class="screen">
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="L" data-lower="l">L</div>
-                    <div class="letter cvc" data-upper="D" data-lower="d">D</div>
-                </div>
-            </div>
-
-            <!-- lp -->
-            <div class="screen">
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="L" data-lower="l">L</div>
-                    <div class="letter cvc" data-upper="P" data-lower="p">P</div>
-                </div>
-            </div>
-
-            <!-- rk -->
-            <div class="screen">
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="R" data-lower="r">R</div>
-                    <div class="letter cvc" data-upper="K" data-lower="k">K</div>
-                </div>
-            </div>
-
-            <!-- lf -->
-            <div class="screen">
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="L" data-lower="l">L</div>
-                    <div class="letter cvc" data-upper="F" data-lower="f">F</div>
-                </div>
-            </div>
-
-            <!-- pt -->
-            <div class="screen">
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="P" data-lower="p">P</div>
-                    <div class="letter cvc" data-upper="T" data-lower="t">T</div>
-                </div>
-            </div>
-
-            <!-- ft -->
-            <div class="screen">
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="F" data-lower="f">F</div>
-                    <div class="letter cvc" data-upper="T" data-lower="t">T</div>
-                </div>
-            </div>
-
-            <!-- ct -->
-            <div class="screen">
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="C" data-lower="c">C</div>
-                    <div class="letter cvc" data-upper="T" data-lower="t">T</div>
-                </div>
-            </div>
-
-            <!-- lk -->
-            <div class="screen">
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="L" data-lower="l">L</div>
-                    <div class="letter cvc" data-upper="K" data-lower="k">K</div>
-                </div>
-            </div>
-
-            <!-- lt -->
-            <div class="screen">
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="L" data-lower="l">L</div>
-                    <div class="letter cvc" data-upper="T" data-lower="t">T</div>
-                </div>
-            </div>
-
-            <!-- xt -->
-            <div class="screen">
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="X" data-lower="x">X</div>
-                    <div class="letter cvc" data-upper="T" data-lower="t">T</div>
-                </div>
-            </div>
-
-            <!-- ts -->
-            <div class="screen">
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="T" data-lower="t">T</div>
-                    <div class="letter cvc" data-upper="S" data-lower="s">S</div>
-                </div>
-            </div>
-
-
-            <div class="screen">
-                        <!-- <div class="heading">CVC & CVCe</div> -->
-                        <div class="letter-card">
-                            <div class="topic">Digraphs</div>
-                        </div>
-                    </div>
-                        <!-- sh -->
-            <div class="screen">
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="SH" data-lower="sh">SH</div>
-                </div>
-            </div>
-
-            <!-- ch -->
-            <div class="screen">
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="CH" data-lower="ch">CH</div>
-                </div>
-            </div>
-
-            <!-- tch -->
-            <div class="screen">
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="TCH" data-lower="tch">TCH</div>
-                </div>
-            </div>
-
-            <!-- th -->
-            <div class="screen">
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="TH" data-lower="th">TH</div>
-                </div>
-            </div>
-
-            <!-- th -->
-            <div class="screen">
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="TH" data-lower="th">TH</div>
-                </div>
-            </div>
-
-            <!-- ng -->
-            <div class="screen">
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="NG" data-lower="ng">NG</div>
-                </div>
-            </div>
-
-            <!-- nk -->
-            <div class="screen">
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="NK" data-lower="nk">NK</div>
-                </div>
-            </div>
-
-            <!-- wh -->
-            <div class="screen">
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="WH" data-lower="wh">WH</div>
-                </div>
-            </div>
-
-            <!-- ph -->
-            <div class="screen">
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="PH" data-lower="ph">PH</div>
-                </div>
-            </div>
-
-            <!-- ck -->
-            <div class="screen">
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="CK" data-lower="ck">CK</div>
-                </div>
-            </div>
-
-            <!-- wr -->
-            <div class="screen">
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="WR" data-lower="wr">WR</div>
-                </div>
-            </div>
-
-            <!-- kn -->
-            <div class="screen">
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="KN" data-lower="kn">KN</div>
-                </div>
-            </div>
-
-            <!-- gn -->
-            <div class="screen">
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="GN" data-lower="gn">GN</div>
-                </div>
-            </div>
-
-            <!-- gh -->
-            <div class="screen">
-                <div class="letter-card">
-                    <div class="letter cvc" data-upper="GH" data-lower="gh">GH</div>
-                </div>
-            </div>
-        
     </div>
 
     <script>
