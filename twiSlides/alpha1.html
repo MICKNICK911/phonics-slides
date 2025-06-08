@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consonant Grid Game</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            color: #fff;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 0px;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .header h1 {
+            font-size: 0px;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(to right, #ffd700, #ff9800);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-family: 'Arial Rounded MT Bold', 'Helvetica Rounded', Arial, sans-serif;
+        }
+
+        .header p {
+            font-size: 20px;
+            margin: 10px;
+            color: #e0e0e0;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 800px;
+            margin-bottom: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 10px 20px;
+        }
+
+        .timer {
+            font-size: 1.2rem;
+            font-weight: bold;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 8px 15px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .timer i {
+            color: #ffd700;
+        }
+
+        #reset-btn {
+            background: linear-gradient(to bottom, #ff5252, #b33939);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        #reset-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(to bottom, #ff6b6b, #c44545);
+        }
+
+        .game-container {
+            max-width: 800px;
+            width: 100%;
+            margin: 10px auto;
+            padding: 25px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .grid1 {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            grid-gap: 12px;
+            margin-bottom: 40px;
+        }
+
+        .grid1 .box {
+            width: 100%;
+            height: 50px;
+            border: 2px solid #4a5568;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 28px;
+            font-weight: bold;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffd700;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .grid1 .box.filled {
+            background: rgba(50, 168, 82, 0.2);
+            border-color: #32a852;
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(50, 168, 82, 0.5);
+        }
+
+        .divider {
+            height: 2px;
+            background: linear-gradient(to right, transparent, #ffd700, transparent);
+            margin: 30px 0;
+            width: 100%;
+        }
+
+        .grid2 {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            grid-gap: 12px;
+        }
+
+        .grid2 button {
+            width: 100%;
+            height: 50px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(to bottom, #ffd700, #ff9800);
+            color: #1a202c;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .grid2 button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(to bottom, #ffe066, #ffa94d);
+        }
+
+        .grid2 button:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .grid2 button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+            background: linear-gradient(to bottom, #a9a9a9, #808080);
+        }
+
+        .game-over-screen, .win-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+        }
+
+        .game-over-screen.visible, .win-screen.visible {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .game-over-content, .win-content {
+            background: linear-gradient(135deg, #b21f1f, #1a2a6c);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 90%;
+            width: 500px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+            border: 2px solid #ffd700;
+        }
+
+        .game-over-screen h1, .win-screen h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #ffd700;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .game-over-screen p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            color: #fff;
+            line-height: 1.5;
+        }
+
+        .time-display {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #ffd700;
+            margin: 15px 0;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 10px 20px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        #restart-btn, #replay-btn {
+            width: 70%;
+            height: 60px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(to bottom, #ffd700, #ff9800);
+            color: #1a202c;
+            font-size: 1.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        #restart-btn:hover, #replay-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(to bottom, #ffe066, #ffa94d);
+        }
+
+        .instructions {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 20px;
+            max-width: 800px;
+        }
+
+        .instructions h3 {
+            color: #ffd700;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .instructions ul {
+            padding-left: 20px;
+            color: #e0e0e0;
+        }
+
+        .instructions li {
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        @media only screen and (max-width: 768px) {
+            .grid1, .grid2 {
+                grid-template-columns: repeat(7, 1fr);
+            }
+            
+            .grid1 .box, .grid2 button {
+                height: 40px;
+                font-size: 20pxpx;
+            }
+            
+            .header h1 {
+                font-size: 20px;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+            .grid1, .grid2 {
+                grid-template-columns: repeat(7, 1fr);
+            }
+            
+            .grid1 .box, .grid2 button {
+                height: 35px;
+                font-size: 18px;
+            }
+            
+            .header h1 {
+                font-size: 20px;
+            }
+            
+            .stats-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            
+            .game-over-content, .win-content {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1><i class="fas fa-keyboard"></i> Hyehyɛ Twi Ntwerɛwde No</h1>
+        <!--<p>Arrange the 22 consonants in alphabetical order by clicking the buttons below</p>-->
+    </div>
+
+    <div class="stats-container">
+        <div class="timer">
+            <i class="fas fa-clock"></i>
+            <span id="time">00:00</span>
+        </div>
+        <button id="reset-btn">
+            <i class="fas fa-redo"></i> Reset
+        </button>
+    </div>
+
+    <div class="game-container">
+        <div class="grid1">
+            <!-- 22 boxes will be generated here -->
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="grid2">
+            <!-- alphabet buttons will be generated here -->
+        </div>
+    </div>
+
+    <!--<div class="instructions">
+        <h3><i class="fas fa-info-circle"></i> How to Play</h3>
+        <ul>
+            <li>Click the buttons in <strong>alphabetical order</strong> to fill the grid</li>
+            <li>Start with <strong>'a'</strong> and continue to <strong>'y'</strong></li>
+            <li>Complete the sequence as quickly as possible</li>
+            <li>If you make a mistake, the game will end</li>
+        </ul>
+    </div>-->
+
+    <div class="game-over-screen">
+        <div class="game-over-content">
+            <h1><i class="fas fa-times-circle"></i> Game Over!</h1>
+            <p id="game-over-message">Wrong letter! Expected 'a' but got 'b'.</p>
+            <button id="restart-btn">
+                <i class="fas fa-play"></i> Try Again
+            </button>
+        </div>
+    </div>
+
+    <div class="win-screen">
+        <div class="win-content">
+            <h2><i class="fas fa-trophy"></i> Congratulations!</h2>
+            <p>You've arranged all consonants in the correct order!</p>
+            <div class="time-display">
+                <i class="fas fa-stopwatch"></i> Time: <span id="final-time">00:00</span>
+            </div>
+            <button id="replay-btn">
+                <i class="fas fa-redo"></i> Play Again
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Updated consonants array with the requested letters
+        const consonants = ['a', 'b', 'd', 'e', 'ɛ', 'f', 'g', 'h', 'i', 'k', 'l', 'm', 'n', 'o', 'ɔ', 'p', 'r', 's', 't', 'u', 'w', 'y'];
+        const alphabet = [...consonants];
+        let currentConsonantIndex = 0;
+        let startTime;
+        let timerInterval;
+        let gameActive = false;
+
+        // DOM elements
+        const timeDisplay = document.getElementById('time');
+        const finalTimeDisplay = document.getElementById('final-time');
+
+        // Generate the grid boxes
+        function generateGrid1() {
+            const grid1 = document.querySelector('.grid1');
+            grid1.innerHTML = '';
+            for (let i = 0; i < 22; i++) {
+                const box = document.createElement('div');
+                box.classList.add('box');
+                box.textContent = '';
+                grid1.appendChild(box);
+            }
+        }
+
+        // Generate the buttons
+        function generateGrid2() {
+            const grid2 = document.querySelector('.grid2');
+            grid2.innerHTML = '';
+            const shuffledAlphabet = shuffleArray([...alphabet]);
+            shuffledAlphabet.forEach(letter => {
+                const btn = document.createElement('button');
+                btn.textContent = letter;
+                btn.addEventListener('click', () => checkConsonant(letter, btn));
+                grid2.appendChild(btn);
+            });
+        }
+
+        // Check if the selected consonant is correct
+        function checkConsonant(letter, button) {
+            if (!gameActive) return;
+            
+            if (consonants[currentConsonantIndex] === letter) {
+                const boxes = document.querySelectorAll('.grid1 .box');
+                boxes[currentConsonantIndex].textContent = letter;
+                boxes[currentConsonantIndex].classList.add('filled');
+                button.disabled = true;
+                currentConsonantIndex++;
+                
+                // Check for win
+                if (currentConsonantIndex === consonants.length) {
+                    gameWon();
+                }
+            } else {
+                gameOver(`Wrong letter! Expected '${consonants[currentConsonantIndex]}' but got '${letter}'.`);
+            }
+        }
+
+        // Start the game timer
+        function startTimer() {
+            startTime = new Date().getTime();
+            clearInterval(timerInterval);
+            timerInterval = setInterval(updateTimer, 1000);
+        }
+
+        // Update the timer display
+        function updateTimer() {
+            const currentTime = new Date().getTime();
+            const elapsedTime = Math.floor((currentTime - startTime) / 1000);
+            const minutes = Math.floor(elapsedTime / 60).toString().padStart(2, '0');
+            const seconds = (elapsedTime % 60).toString().padStart(2, '0');
+            timeDisplay.textContent = `${minutes}:${seconds}`;
+        }
+
+        // Stop the timer
+        function stopTimer() {
+            clearInterval(timerInterval);
+        }
+
+        // Handle game over
+        function gameOver(message) {
+            stopTimer();
+            gameActive = false;
+            document.getElementById('game-over-message').textContent = message;
+            document.querySelector('.game-over-screen').classList.add('visible');
+        }
+
+        // Handle game win
+        function gameWon() {
+            stopTimer();
+            gameActive = false;
+            
+            // Display final time
+            const elapsedSeconds = Math.floor((new Date().getTime() - startTime) / 1000);
+            const minutes = Math.floor(elapsedSeconds / 60).toString().padStart(2, '0');
+            const seconds = (elapsedSeconds % 60).toString().padStart(2, '0');
+            finalTimeDisplay.textContent = `${minutes}:${seconds}`;
+            
+            document.querySelector('.win-screen').classList.add('visible');
+        }
+
+        // Reset the game
+        function resetGame() {
+            stopTimer();
+            currentConsonantIndex = 0;
+            generateGrid1();
+            generateGrid2();
+            timeDisplay.textContent = '00:00';
+            
+            // Hide game over/win screens
+            document.querySelector('.game-over-screen').classList.remove('visible');
+            document.querySelector('.win-screen').classList.remove('visible');
+            
+            // Start timer and set game as active
+            startTimer();
+            gameActive = true;
+        }
+
+        // Shuffle array function
+        function shuffleArray(arr) {
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        }
+
+        // Event listeners
+        document.getElementById('reset-btn').addEventListener('click', resetGame);
+        document.getElementById('restart-btn').addEventListener('click', resetGame);
+        document.getElementById('replay-btn').addEventListener('click', resetGame);
+
+        // Initialize the game
+        window.addEventListener('DOMContentLoaded', () => {
+            generateGrid1();
+            generateGrid2();
+            resetGame();
+        });
+    </script>
+</body>
+</html>
